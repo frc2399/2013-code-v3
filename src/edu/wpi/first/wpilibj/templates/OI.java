@@ -108,11 +108,12 @@ public class OI {
         joystickDriveButt.whenPressed(joystickDrive);
         fireButt.whenPressed(fire);
         closeLoopDriveButt.whenPressed(closeLoopDrive);
+        aim.whenPressed( testVision );
         
     }
     
-    aim.whenPressed( testVision );
-}
+    
+
     //FIX THESE 
     //we dont want to twist and go forward!!!!!
     //they are all negative because PIMP is wired so that all of the motors run 
