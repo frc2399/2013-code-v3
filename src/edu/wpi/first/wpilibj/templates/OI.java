@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.templates.commands.BackwardsJoystickDrive;
 import edu.wpi.first.wpilibj.templates.commands.PIDYawTest;
 import edu.wpi.first.wpilibj.templates.commands.Fire;
 import edu.wpi.first.wpilibj.templates.commands.CloseLoopAngleDrive;
+import edu.wpi.first.wpilibj.templates.commands.Strafe;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -59,6 +60,8 @@ public class OI {
     Joystick rightStick = new Joystick(2);
     
     Button aim = new JoystickButton(driveyStick, 2);
+    Button strafe = new JoystickButton(driveyStick, 12);
+    Button strafe2 = new JoystickButton(driveyStick, 5);
     
     public static int fastShootButtNum = 7;
     public static int medShootButtNum = 8;
@@ -95,20 +98,27 @@ public class OI {
     BackwardsJoystickDrive backwardsJoystickDrive = new BackwardsJoystickDrive();
     Fire fire = new Fire();
     CloseLoopAngleDrive closeLoopDrive = new CloseLoopAngleDrive(0);
-	TestVision testVision = new TestVision();    
+    TestVision testVision = new TestVision(); 
+    Strafe strafes = new Strafe(0.25);
+    Strafe strafess = new Strafe( -0.25);
+    CloseLoopAngleDrive clad = new CloseLoopAngleDrive(0);
 
     public OI(){
         //fastShootButt.whenPressed(fastShootOn);
         //medShootButt.whenPressed(medShootOn);
         //slowShootButt.whenPressed(slowShootOn);
-        //shootOffButt.whenPressed(shootOff);
+        //shootOffButt.whenPressed(shoostOff);
         gyroResetButt.whenPressed(gyroReset);
         turnButt.whenPressed(turn);
         //backwardsJoystickDriveButt.whenPressed(backwardsJoystickDrive);
         joystickDriveButt.whenPressed(joystickDrive);
         fireButt.whenPressed(fire);
         closeLoopDriveButt.whenPressed(closeLoopDrive);
-        aim.whenPressed( testVision );
+        aim.whenPressed(clad);
+        aim.whileHeld( testVision );
+        aim.whenReleased(joystickDrive);
+        strafe.whileHeld( strafes );
+        strafe2.whileHeld(strafess);
         
     }
     

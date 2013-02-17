@@ -1,6 +1,7 @@
 
 package edu.wpi.first.wpilibj.templates.commands;
 
+import com.sun.squawk.util.MathUtils;
 import edu.wpi.first.wpilibj.Timer;
 
 
@@ -36,12 +37,13 @@ public class JoystickDrive extends CommandBase {
         //it seems to be okay now
         //not sure why
         //look into this matter later, might need to change some source code
+        //driveTrain.drive.mecanumDrive_Cartesian(MathUtils.pow(oi.getSideSpeed(), 3), MathUtils.pow(oi.getForwardSpeed(), 3), MathUtils.pow(oi.getTwistSpeed(), 3), 0);
         driveTrain.drive.mecanumDrive_Cartesian(oi.getSideSpeed(), oi.getForwardSpeed(), oi.getTwistSpeed(), 0);
         
         //System.out.println("Time: " + timer.get() + "miliseconds");
-        System.out.println("encoder: " + driveTrain.getTestEncoder());
-        System.out.println("gyro: " + driveTrain.getGyroAngle());
-        System.out.println("Left Throttle: " + oi.getLeftStickThrottle());
+        //System.out.println("encoder: " + driveTrain.getTestEncoder());
+        //System.out.println("gyro: " + driveTrain.getGyroAngle());
+        //System.out.println("Left Throttle: " + oi.getLeftStickThrottle());
         
         /**
         //forward = leftFront

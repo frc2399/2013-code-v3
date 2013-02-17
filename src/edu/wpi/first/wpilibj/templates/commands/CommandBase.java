@@ -32,7 +32,6 @@ public abstract class CommandBase extends Command {
     public static Trigger trigger;
     public static Loader1 loader1;
     public static Loader2 loader2;
-    
 
     public static void init() {
         // This MUST be here. If the OI creates Commands (which it very likely
@@ -49,6 +48,7 @@ public abstract class CommandBase extends Command {
         trigger = new Trigger();
         loader1 = new Loader1();
         loader2 = new Loader2();
+        
 
         //leave oi at the bottom and apart from the other initialized things
         //if it is initialized before the subsytems, it throws some null pointer exceptions

@@ -41,7 +41,7 @@ public class Strafe extends CommandBase {
         //System.out.println( beginTime- endTime);
         
         //run for two seconds, and then stop
-        if( endTime - beginTime >= 2000){
+        if( endTime - beginTime >= 500){
             return true;
         } else{
             return false;

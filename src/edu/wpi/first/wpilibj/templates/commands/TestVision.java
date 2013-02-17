@@ -36,8 +36,9 @@ public class TestVision extends CommandBase {
     int blobHeight;
     ParticleAnalysisReport newReport;
     
-    Strafe strafe = new Strafe(-0.25);
-    Strafe negStrafe = new Strafe( 0.25);
+    Strafe strafe = new Strafe(0.25);
+    Strafe negStrafe = new Strafe( -0.25);
+    CloseLoopAngleDrive clad = new CloseLoopAngleDrive( 0 );
     
 
     public TestVision() {
@@ -51,93 +52,97 @@ public class TestVision extends CommandBase {
     protected void initialize() {
         //why the hell is there an i here
         //i didnt make this(i think)
-        int i = 4;
+        camera = AxisCamera.getInstance("10.23.99.11");
+        camera.writeMaxFPS(30);
+        
         
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         i++;
-        System.out.println("Execute testVision is running.");
+        //System.out.println("Execute testVision is running.");
+        
+        if( camera.freshImage()){
+            
+            cc = new CriteriaCollection(); 
+            cc.addCriteria(MeasurementType.IMAQ_MT_AREA, 500, 65535, false);
 
-        camera = AxisCamera.getInstance("10.23.99.11");
-        cc = new CriteriaCollection(); 
-        cc.addCriteria(MeasurementType.IMAQ_MT_AREA, 500, 65535, false);
-
-        camera.writeResolution(AxisCamera.ResolutionT.k320x240);   //will not work with a lower reolution
-
-
-        //if no delay, then AXIS CAMERA EXCEPTION!!!!
-        //only runs first time through execute
-        if (foo) {
-            //Timer.delay(5);
-        }
-
-        try {
-
-            ColorImage image = camera.getImage();
-
-            image.write("/newImage.bmp");
-
-            BinaryImage thresholdImage = image.thresholdRGB(162, 255, 152, 255, 178, 255);    //testing these valus now...
-            //thresholdImage.write("/threshold" + "d" + ".bmp");
-            BinaryImage convexHullImage = thresholdImage.convexHull(false);          // fill in occluded rectangles
-            //convexHullImage.write("/convexHull" + "d" + ".bmp");
-            BinaryImage filteredImage = convexHullImage.particleFilter(cc);           // filter out small particles
-            //filteredImage.write("/filteredImage" + "d" + ".bmp");
-            newFilteredImage = convexHullImage.particleFilter(cc);
+            camera.writeResolution(AxisCamera.ResolutionT.k320x240);   //will not work with a lower reolution
 
 
-            //prints out the number of particles (red blobs) it sees after filtering
-            //number of particles should be the number of targets in your viewing angle
-            int numBlobs = filteredImage.getNumberParticles();
+            //if no delay, then AXIS CAMERA EXCEPTION!!!!
+            //only runs first time through execute
+            if (foo) {
+                //Timer.delay(5);
+            }
 
-            System.out.println("Number of Particles: " + numBlobs + "\n" + "\n");
+            try {
 
-            //prints out information for each blob found
-            for (int i = 0; i < numBlobs; i++) {
-                ParticleAnalysisReport report = filteredImage.getParticleAnalysisReport(i);
-                /*System.out.println( //"Particle Analysis Report for " + i + " blob: " + report.toString() + "\n" + "\n" +
+                ColorImage image = camera.getImage();
+
+                image.write("/newImage.bmp");
+
+                BinaryImage thresholdImage = image.thresholdHSV(0, 255, 0, 255, 223, 255);    //testing these valus now...
+                //thresholdImage.write("/threshold" + "d" + ".bmp");
+                BinaryImage convexHullImage = thresholdImage.convexHull(false);          // fill in occluded rectangles
+                //convexHullImage.write("/convexHull" + "d" + ".bmp");
+                BinaryImage filteredImage = convexHullImage.particleFilter(cc);           // filter out small particles
+                //filteredImage.write("/filteredImage" + "d" + ".bmp");
+                newFilteredImage = convexHullImage.particleFilter(cc);
+
+
+                //prints out the number of particles (red blobs) it sees after filtering
+                //number of particles should be the number of targets in your viewing angle
+                int numBlobs = filteredImage.getNumberParticles();
+
+                System.out.println("Number of Particles: " + numBlobs + "\n" + "\n");
+
+                //prints out information for each blob found
+                for (int i = 0; i < numBlobs; i++) {
+                    ParticleAnalysisReport report = filteredImage.getParticleAnalysisReport(i);
+                    /*System.out.println( //"Particle Analysis Report for " + i + " blob: " + report.toString() + "\n" + "\n" +
                         "Bounding Rectangle width for blob " + i + ": " + report.boundingRectWidth + "\n" + "\n"
                         + "Bounding Rectangle Height for blob " + i + ": " + report.boundingRectHeight + "\n" + "\n"
                         + //"Bounding Rectangle Area for blob " + i + ": "+ report.particleArea + "\n" + "\n" +
                         "Blob" + i + "center: " + report.center_mass_x + "," + report.center_mass_y  + "\n" + "\n");
 
-                System.out.println("blob " + i + " is a " + getTargetType(i) + "\n" + "\n");
-                System.out.println("Distance 32.4: " + getDistance(i, (double)report.boundingRectWidth, 32.4) + "\n" + "\n");
-                System.out.println("Distance 33.2: " + getDistance(i, (double)report.boundingRectWidth, 33.2) + "\n" + "\n");
-                */
+                    System.out.println("blob " + i + " is a " + getTargetType(i) + "\n" + "\n");
+                    System.out.println("Distance 32.4: " + getDistance(i, (double)report.boundingRectWidth, 32.4) + "\n" + "\n");
+                    System.out.println("Distance 33.2: " + getDistance(i, (double)report.boundingRectWidth, 33.2) + "\n" + "\n");
+                    */
                 
-                //finds the target we want to aim for
-                if( i == 0){
-                    blobWeWant = i;
-                    blobHeight = report.boundingRectHeight;
-                } else if( blobHeight > report.boundingRectHeight){
-                    blobWeWant = i;
+                    //finds the target we want to aim for
+                    if( i == 0){
+                        blobWeWant = i;
+                        blobHeight = report.boundingRectHeight;
+                    } else if( blobHeight > report.boundingRectHeight){
+                        blobWeWant = i;
+                    }
                 }
-            }
             
-            newReport = filteredImage.getParticleAnalysisReport(blobWeWant);
-            //if to the right of target move left, if to the left of target move right, if in the center area, does not move
-            if(newReport.center_mass_x  < 150){
-                strafe.start();
-            } else if( newReport.center_mass_x > 170){     //looks for target with the smallest height
-                negStrafe.start();
-            } 
+                newReport = filteredImage.getParticleAnalysisReport(blobWeWant);
+                //if to the right of target move left, if to the left of target move right, if in the center area, does not move
+                if(newReport.center_mass_x  < 150){
+                    strafe.start();
+                } else if( newReport.center_mass_x > 170){     //looks for target with the smallest height
+                    negStrafe.start();
+                } 
+             
             
-            
-            //Always free every image you make!!!!
-            image.free();
-            thresholdImage.free();
-            convexHullImage.free();
-            filteredImage.free();
+                //Always free every image you make!!!!
+                image.free();
+                thresholdImage.free();
+                convexHullImage.free();
+                filteredImage.free();
 
-        } catch (AxisCameraException ex) {
-            ex.printStackTrace();
-        } catch (NIVisionException ex) {
-            ex.printStackTrace();
+            } catch (AxisCameraException ex) {
+                ex.printStackTrace();
+            } catch (NIVisionException ex) {
+                ex.printStackTrace();
+            }
+            foo = false;
         }
-        foo = false;
     }
 
     
