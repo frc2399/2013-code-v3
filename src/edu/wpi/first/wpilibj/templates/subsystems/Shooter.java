@@ -22,13 +22,13 @@ public class Shooter extends PIDSubsystem {
     
     public Shooter(){
         super(0.001, 0, 0);
-        /**
+        
         try {
             shootMot = new CANJaguar(RobotMap.shootMot);
         }catch(Exception e){
             System.out.println(e);
         }
-         */
+         
         
     }
 
@@ -48,13 +48,13 @@ public class Shooter extends PIDSubsystem {
     protected void usePIDOutput(double output){
         //TEST THIS
         //this is really small so that the robot does not decapitatie itself!
-        /**
+        
         try{
             shootMot.setX(output);
         }catch(Exception e){
             
         }
-         */ 
+         
         
     }
     
@@ -62,14 +62,13 @@ public class Shooter extends PIDSubsystem {
         //shootMot.set(speed);
 
         
-        /**
-         * 
+        
          try{
             shootMot.setX(speed);
         }catch(Exception e){
             
         }
-         */ 
+         
     }
     
     

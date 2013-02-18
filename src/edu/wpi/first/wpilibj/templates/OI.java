@@ -16,6 +16,9 @@ import edu.wpi.first.wpilibj.templates.commands.PIDYawTest;
 import edu.wpi.first.wpilibj.templates.commands.Fire;
 import edu.wpi.first.wpilibj.templates.commands.CloseLoopAngleDrive;
 import edu.wpi.first.wpilibj.templates.commands.Strafe;
+import edu.wpi.first.wpilibj.templates.commands.LoaderTester;
+import edu.wpi.first.wpilibj.templates.commands.ManPitch;
+import edu.wpi.first.wpilibj.templates.commands.PIDPitch;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -73,6 +76,9 @@ public class OI {
     public static int joystickDriveButtNum = 9;
     public static int fireButtNum = 1;
     public static int closeLoopDriveButtNum = 11;
+    public static int loaderTestButtNum = 9;
+    public static int manPitchOnTestButtNum = 11;
+    public static int manPitchOffTestButtNum = 10;
     
     
     
@@ -86,12 +92,15 @@ public class OI {
     private final JoystickButton joystickDriveButt = new JoystickButton(rightStick, joystickDriveButtNum);
     private final JoystickButton fireButt = new JoystickButton(driveyStick, fireButtNum);
     private final JoystickButton closeLoopDriveButt = new JoystickButton(driveyStick, closeLoopDriveButtNum);
+    private final JoystickButton loaderTestButt = new JoystickButton(leftStick, loaderTestButtNum);
+    private final JoystickButton manPitchOnTestButt = new JoystickButton(rightStick, manPitchOnTestButtNum);
+    private final JoystickButton manPitchOffTestButt = new JoystickButton(rightStick, manPitchOffTestButtNum);
     
     
-    //ShootOn fastShootOn = new ShootOn(1);
-    //ShootOn medShootOn = new ShootOn(.75);
-    //ShootOn slowShootOn = new ShootOn(.5);
-    //ShootOff shootOff = new ShootOff();
+    ShootOn fastShootOn = new ShootOn(1);
+    ShootOn medShootOn = new ShootOn(.75);
+    ShootOn slowShootOn = new ShootOn(.5);
+    ShootOff shootOff = new ShootOff();
     GyroReset gyroReset = new GyroReset();
     PIDYawTest turn = new PIDYawTest(90);
     JoystickDrive joystickDrive = new JoystickDrive();
@@ -102,12 +111,15 @@ public class OI {
     Strafe strafes = new Strafe(0.25);
     Strafe strafess = new Strafe( -0.25);
     CloseLoopAngleDrive clad = new CloseLoopAngleDrive(0);
+    LoaderTester loaderTester = new LoaderTester();
+    ManPitch manPitch = new ManPitch();
+    PIDPitch pitchOff = new PIDPitch(0.0);
 
     public OI(){
-        //fastShootButt.whenPressed(fastShootOn);
-        //medShootButt.whenPressed(medShootOn);
-        //slowShootButt.whenPressed(slowShootOn);
-        //shootOffButt.whenPressed(shoostOff);
+        fastShootButt.whenPressed(fastShootOn);
+        medShootButt.whenPressed(medShootOn);
+        slowShootButt.whenPressed(slowShootOn);
+        shootOffButt.whenPressed(shootOff);
         gyroResetButt.whenPressed(gyroReset);
         turnButt.whenPressed(turn);
         //backwardsJoystickDriveButt.whenPressed(backwardsJoystickDrive);
@@ -119,6 +131,9 @@ public class OI {
         aim.whenReleased(joystickDrive);
         strafe.whileHeld( strafes );
         strafe2.whileHeld(strafess);
+        loaderTestButt.whenPressed(loaderTester);
+        manPitchOnTestButt.whenPressed(manPitch);
+        manPitchOffTestButt.whenPressed(pitchOff);
         
     }
     

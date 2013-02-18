@@ -1,4 +1,5 @@
 
+
 package edu.wpi.first.wpilibj.templates.commands;
 
 /**
@@ -20,6 +21,8 @@ public class ManPitch extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         pitch.setSetpoint(oi.getDriveyStickThrottle());
+        System.out.println("regular pitch angle " + pitch.pitchEncoder.getValue());
+        System.out.println("PID pitch angle " + pitch.pitchEncoder.pidGet());
     }
 
     // Make this return true when this Command no longer needs to run execute()

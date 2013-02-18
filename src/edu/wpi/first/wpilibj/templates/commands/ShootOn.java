@@ -20,7 +20,8 @@ public class ShootOn extends CommandBase {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        //shooter.setSetpoint(speed);
+        shooter.setSetpoint(speed);
+        System.out.println("Shooter encoder " + shooter.shootEncoder.get());
     }
 
     // Called repeatedly when this Command is scheduled to run

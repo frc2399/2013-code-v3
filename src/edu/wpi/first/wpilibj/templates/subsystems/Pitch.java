@@ -24,19 +24,20 @@ public class Pitch extends PIDSubsystem {
     
     public Pitch(){
         super(0.000001, 0, 0);
-        /**
+        
         try{
             pitchMot = new CANJaguar(RobotMap.pitchMot, ControlMode.kSpeed);
         }catch(Exception e){
             System.out.println(e);
         }
-         */ 
+         
     }
     
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-        setDefaultCommand(new ManPitch());
+        
+        //setDefaultCommand(new ManPitch());
     }
     
     public void setSetpoint(double angle){
@@ -57,13 +58,13 @@ public class Pitch extends PIDSubsystem {
     protected void usePIDOutput(double output){
         //TEST THIS
         //this is really small so that the robot does not decapitatie itself!
-        /**
+        
         try{
             pitchMot.setX(output * 0.1);
         }catch(Exception e){
             System.out.println(e);
         }
-         */ 
+          
     }
     
     

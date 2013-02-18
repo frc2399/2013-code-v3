@@ -44,6 +44,9 @@ public class RobotMap {
     public static final int loadMot2 = 8;
     //NOT CORRECT!!!!!
     public static final int shootMot = 9;
+    //NOT CORRECT!!!!!
+    public static final int climbingMot1 = 10;
+    public static final int climbingMot2 = 11;
     
     //NOT CORRECT!!!!!
     public static final int topSensor = 1;
