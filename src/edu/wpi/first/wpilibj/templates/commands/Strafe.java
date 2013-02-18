@@ -40,7 +40,7 @@ public class Strafe extends CommandBase {
         endTime = Timer.getUsClock()/ 1000;
         //System.out.println( beginTime- endTime);
         
-        //run for two seconds, and then stop
+        //run for .5 seconds, and then stop
         if( endTime - beginTime >= 500){
             return true;
         } else{
