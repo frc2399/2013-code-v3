@@ -22,7 +22,8 @@ public class Fire extends CommandBase {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        //trigger.triggerMot.set(.1);
+        //trigger.triggerMot.set(.8);
+        
         
     }
 
@@ -36,13 +37,13 @@ public class Fire extends CommandBase {
         //COOL
         //DON'T FORGET
         
-        //trigger.triggerMot.set(0);
+        //trigger.triggerMot.set(0.5);
         trigger.triggerMot.getAngle();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return trigger.triggerMot.get() == 0;
+        return trigger.triggerMot.get() == 0.5;
     }
 
     // Called once after isFinished returns true

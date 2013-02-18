@@ -20,7 +20,7 @@ public class ManPitch extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        pitch.setSetpoint(oi.getDriveyStickThrottle());
+        //pitch.setSetpoint(oi.getDriveyStickThrottle() * 180);
         System.out.println("regular pitch angle " + pitch.pitchEncoder.getValue());
         System.out.println("PID pitch angle " + pitch.pitchEncoder.pidGet());
     }

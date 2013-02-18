@@ -63,8 +63,8 @@ public class OI {
     Joystick rightStick = new Joystick(2);
     
     Button aim = new JoystickButton(driveyStick, 2);
-    Button strafe = new JoystickButton(driveyStick, 12);
-    Button strafe2 = new JoystickButton(driveyStick, 5);
+    Button strafe = new JoystickButton(leftStick, 6);
+    Button strafe2 = new JoystickButton(leftStick, 7);
     
     public static int fastShootButtNum = 7;
     public static int medShootButtNum = 8;
@@ -164,6 +164,11 @@ public class OI {
     public double getLeftStickThrottle()
     {
         return leftStick.getRawAxis(3);
+    }
+    
+    public double getRightStickThrottle()
+    {
+        return rightStick.getRawAxis(3);
     }
 }
 

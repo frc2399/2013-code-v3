@@ -3,44 +3,53 @@ package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.templates.PIDOutputTranslator;
-
-
+import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.templates.AccelerometerPosition;
 /**
  *
  * @author Jessie
  */
-public class PIDYawTest extends CommandBase {
+public class PIDStrafe extends CommandBase {
+
     
     PIDController controller;
     PIDOutputTranslator translator;
-    double angle;
-
-    public PIDYawTest(double angle) {
+    
+    AccelerometerPosition accelerometerPosition;
+    
+    double dist;
+    
+    /**
+     * 
+     * @param dist the desired distance in meters
+     */
+    public PIDStrafe(double dist) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         requires(driveTrain);
-        this.angle = angle;
+        this.dist = dist;
+        
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
         
         translator = new PIDOutputTranslator();
+        accelerometerPosition = new AccelerometerPosition();
+        accelerometerPosition.reset();
         
         //controller = new PIDController((oi.getDriveyStickThrottle() + 1.0) / 20.0, 0, 0, driveTrain.gyro, translator);
-        controller = new PIDController(0.001, 0, 0, driveTrain.gyro, translator);
-        // P = 0.00546875
-        controller.setSetpoint(driveTrain.getGyroAngle() + angle);
-        controller.setPercentTolerance(1);
-        controller.setInputRange(-360, 360);
+        controller = new PIDController(0.001, 0.0, 0.0, accelerometerPosition, translator);
+        
+        controller.setSetpoint(dist);
+        controller.setPercentTolerance(5);
         controller.enable();
+        
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        System.out.println("Translator: " + translator.getValue() + "P " + controller.getP());
-        
-        driveTrain.drive.mecanumDrive_Cartesian(0, 0, -translator.getValue(), 0);
+        driveTrain.drive.mecanumDrive_Cartesian(translator.getValue(), 0, 0, 0);
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -20,7 +20,8 @@ public class Pitch extends PIDSubsystem {
     public AnalogChannel pitchEncoder = new AnalogChannel(RobotMap.pitchEncoder);
     
     final double MinAngle = 0;
-    final double MaxAngle = 35;
+    //MAX ANGLE SHOULD BE 35, I AM JUST BEING CAREFUL!
+    final double MaxAngle = 30;
     
     public Pitch(){
         super(0.000001, 0, 0);
