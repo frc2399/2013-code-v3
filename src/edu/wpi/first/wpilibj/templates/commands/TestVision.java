@@ -166,7 +166,7 @@ public class TestVision extends CommandBase {
      * @return target type( Top, Middle)
      * calculates type of target based on width to height ratios
      */
-    String getTargetType(int particle) {
+    public String getTargetType(int particle) {
 
         String target = "not set";
         try {
