@@ -121,7 +121,7 @@ public class OI {
         slowShootButt.whenPressed(slowShootOn);
         shootOffButt.whenPressed(shootOff);
         gyroResetButt.whenPressed(gyroReset);
-        turnButt.whenPressed(turn);
+        //turnButt.whenPressed(turn);
         //backwardsJoystickDriveButt.whenPressed(backwardsJoystickDrive);
         joystickDriveButt.whenPressed(joystickDrive);
         fireButt.whenPressed(fire);
