@@ -9,20 +9,21 @@ package edu.wpi.first.wpilibj.templates.commands;
  * @author Jessie
  */
 public class Fire extends CommandBase {
-    
+    double angle;
 
     /**
      * 
      */
-    public Fire() {
+    public Fire(double angle) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         requires(trigger);
+        this.angle = angle;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        //trigger.triggerMot.set(.8);
+        
         
         
     }
@@ -37,13 +38,13 @@ public class Fire extends CommandBase {
         //COOL
         //DON'T FORGET
         
-        //trigger.triggerMot.set(0.5);
-        trigger.triggerMot.getAngle();
+        trigger.triggerMot.set(angle);
+        //trigger.triggerMot.getAngle();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return trigger.triggerMot.get() == 0.5;
+        return trigger.triggerMot.get() == angle;
     }
 
     // Called once after isFinished returns true

@@ -19,6 +19,10 @@ import edu.wpi.first.wpilibj.templates.commands.Strafe;
 import edu.wpi.first.wpilibj.templates.commands.LoaderTester;
 import edu.wpi.first.wpilibj.templates.commands.ManPitch;
 import edu.wpi.first.wpilibj.templates.commands.PIDPitch;
+import edu.wpi.first.wpilibj.templates.commands.LiftOn;
+import edu.wpi.first.wpilibj.templates.commands.LiftOff;
+import edu.wpi.first.wpilibj.templates.commands.TestPitchOff;
+import edu.wpi.first.wpilibj.templates.commands.TestPitchOn;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -77,8 +81,11 @@ public class OI {
     public static int fireButtNum = 1;
     public static int closeLoopDriveButtNum = 11;
     public static int loaderTestButtNum = 9;
-    public static int manPitchOnTestButtNum = 11;
+    public static int manPitchOnDownTestButtNum = 11;
+    public static int manPitchOnUpTestButtNum = 8;
     public static int manPitchOffTestButtNum = 10;
+    public static int liftOnButtNum = 11;
+    public static int liftOffButtNum = 10;
     
     
     
@@ -93,8 +100,11 @@ public class OI {
     private final JoystickButton fireButt = new JoystickButton(driveyStick, fireButtNum);
     private final JoystickButton closeLoopDriveButt = new JoystickButton(driveyStick, closeLoopDriveButtNum);
     private final JoystickButton loaderTestButt = new JoystickButton(leftStick, loaderTestButtNum);
-    private final JoystickButton manPitchOnTestButt = new JoystickButton(rightStick, manPitchOnTestButtNum);
+    private final JoystickButton manPitchOnDownTestButt = new JoystickButton(rightStick, manPitchOnDownTestButtNum);
+    private final JoystickButton manPitchOnUpTestButt = new JoystickButton(rightStick, manPitchOnUpTestButtNum);
     private final JoystickButton manPitchOffTestButt = new JoystickButton(rightStick, manPitchOffTestButtNum);
+    private final JoystickButton liftOnButt = new JoystickButton(leftStick, liftOnButtNum);
+    private final JoystickButton liftOffButt = new JoystickButton(leftStick, liftOffButtNum);
     
     
     ShootOn fastShootOn = new ShootOn(1);
@@ -105,7 +115,8 @@ public class OI {
     PIDYawTest turn = new PIDYawTest(90);
     JoystickDrive joystickDrive = new JoystickDrive();
     BackwardsJoystickDrive backwardsJoystickDrive = new BackwardsJoystickDrive();
-    Fire fire = new Fire();
+    Fire fireOn = new Fire(.95);
+    Fire fireOff = new Fire(.4);
     CloseLoopAngleDrive closeLoopDrive = new CloseLoopAngleDrive(0);
     TestVision testVision = new TestVision(); 
     Strafe strafes = new Strafe(0.25);
@@ -114,6 +125,11 @@ public class OI {
     LoaderTester loaderTester = new LoaderTester();
     ManPitch manPitch = new ManPitch();
     PIDPitch pitchOff = new PIDPitch(0.0);
+    LiftOn liftOn = new LiftOn(0.2);
+    LiftOff liftOff = new LiftOff();
+    TestPitchOn testPitchOnDown = new TestPitchOn(0.3);
+    TestPitchOn testPitchOnUp = new TestPitchOn(-0.3);
+    TestPitchOff testPitchOff = new TestPitchOff();
 
     public OI(){
         fastShootButt.whenPressed(fastShootOn);
@@ -124,7 +140,8 @@ public class OI {
         //turnButt.whenPressed(turn);
         //backwardsJoystickDriveButt.whenPressed(backwardsJoystickDrive);
         joystickDriveButt.whenPressed(joystickDrive);
-        fireButt.whenPressed(fire);
+        fireButt.whenPressed(fireOn);
+        fireButt.whenReleased(fireOff);
         closeLoopDriveButt.whenPressed(closeLoopDrive);
         aim.whenPressed(clad);
         aim.whileHeld( testVision );
@@ -132,8 +149,14 @@ public class OI {
         strafe.whileHeld( strafes );
         strafe2.whileHeld(strafess);
         loaderTestButt.whenPressed(loaderTester);
-        manPitchOnTestButt.whenPressed(manPitch);
-        manPitchOffTestButt.whenPressed(pitchOff);
+        //manPitchOnTestButt.whenPressed(manPitch);
+        //manPitchOffTestButt.whenPressed(pitchOff);
+        manPitchOnDownTestButt.whenPressed(testPitchOnDown);
+        manPitchOnUpTestButt.whenPressed(testPitchOnUp);
+        manPitchOffTestButt.whenPressed(testPitchOff);
+        
+        liftOnButt.whenPressed(liftOn);
+        liftOffButt.whenPressed(liftOff);
         
     }
     

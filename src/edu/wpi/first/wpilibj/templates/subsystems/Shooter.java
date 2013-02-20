@@ -17,7 +17,7 @@ public class Shooter extends PIDSubsystem {
     //if this fails, ask electrical if it is actually plugged into this port
     //might not be a Jag
     
-    public Encoder shootEncoder = new Encoder(RobotMap.shootEncoderA, RobotMap.shootEncoderB);
+    //public Encoder shootEncoder = new Encoder(RobotMap.shootEncoderA, RobotMap.shootEncoderB);
     public CANJaguar shootMot;
     
     public Shooter(){
@@ -42,7 +42,8 @@ public class Shooter extends PIDSubsystem {
     }
     
     protected double returnPIDInput(){
-        return shootEncoder.pidGet();
+        //return shootEncoder.pidGet();
+        return 0.0;
     }
     
     protected void usePIDOutput(double output){
@@ -69,6 +70,16 @@ public class Shooter extends PIDSubsystem {
             
         }
          
+    }
+    
+    public double getSpeed(){
+        double x = 0.0;
+        try{
+            x =  shootMot.getX();
+        }catch(Exception e){
+            
+        }
+        return x;
     }
     
     

@@ -29,6 +29,13 @@ public class Climbing2 extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
     
+    public void setSpeed(double speed){
+        try{
+            climbingMot2.setX(speed);
+        }catch(Exception e){
+            
+        }
+    }
     
 }
 

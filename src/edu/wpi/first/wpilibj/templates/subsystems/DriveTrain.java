@@ -17,8 +17,6 @@ public class DriveTrain extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
-    //THESE ARE NOT CORRECT PORT NUMBERS!!!
-    //they are set to PIMP's #'s
     public CANJaguar leftFront; // = new Jaguar(1);
     public CANJaguar leftRear; // = new Jaguar(2);
     public CANJaguar rightFront; // = new Jaguar(4);
@@ -31,10 +29,11 @@ public class DriveTrain extends Subsystem {
     
     public DriveTrain(){
         try{
-            leftFront = new CANJaguar(1);
-            leftRear = new CANJaguar(2);
-            rightFront = new CANJaguar(4);
-            rightRear = new CANJaguar(3);
+            //CORRECT 
+            leftFront = new CANJaguar(7);
+            leftRear = new CANJaguar(8);
+            rightFront = new CANJaguar(6);
+            rightRear = new CANJaguar(5);
         }catch(Exception e){
             System.out.println(e);
             System.out.println(leftFront);

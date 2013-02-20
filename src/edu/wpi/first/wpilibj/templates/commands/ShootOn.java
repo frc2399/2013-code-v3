@@ -20,8 +20,9 @@ public class ShootOn extends CommandBase {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        shooter.setSetpoint(speed);
-        System.out.println("Shooter encoder " + shooter.shootEncoder.get());
+        //shooter.setSetpoint(speed);
+        shooter.setShooterSpeed(-speed);
+        //System.out.println("Shooter encoder " + shooter.shootEncoder.get());
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -31,7 +32,8 @@ public class ShootOn extends CommandBase {
     // Make this return true when this Command no longer needs to run execute()
     //ends command if the speed of the shooter is greater than or equal to the input speed
     protected boolean isFinished() {
-        return shooter.onTarget();
+        //return shooter.onTarget();
+        return shooter.getSpeed() == -speed;
     }
 
     // Called once after isFinished returns true

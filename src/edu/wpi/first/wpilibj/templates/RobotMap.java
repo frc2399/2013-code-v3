@@ -33,20 +33,20 @@ public class RobotMap {
     public static final int shootEncoderA = 8;
     public static final int shootEncoderB = 9;
     
-    
-    public static final int gyro = 2;
-    //NOT CORRECT!!!!!
-    public static final int pitchMot = 5;
-    //NOT CORRECT!!!!!
-    public static final int triggerMot = 6;
+    //CORRECT
+    public static final int gyro = 1;
+    //CORRECT
+    public static final int pitchMot = 3;
+    //CORRECT
+    public static final int triggerMot = 1;
     //NOT CORRECT!!!!!
     public static final int loadMot1 = 7;
     public static final int loadMot2 = 8;
-    //NOT CORRECT!!!!!
-    public static final int shootMot = 9;
-    //NOT CORRECT!!!!!
-    public static final int climbingMot1 = 10;
-    public static final int climbingMot2 = 11;
+    //CORRECT
+    public static final int shootMot = 2;
+    //CORRECT
+    public static final int climbingMot1 = 1;
+    public static final int climbingMot2 = 4;
     
     //NOT CORRECT!!!!!
     public static final int topSensor = 1;
