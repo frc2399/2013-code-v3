@@ -144,9 +144,9 @@ public class OI {
         fireButt.whenReleased(fireOff);
         closeLoopDriveButt.whenPressed(closeLoopDrive);
         aim.whenPressed(clad);
-        aim.whileHeld( testVision );
+        aim.whileHeld(testVision);
         aim.whenReleased(joystickDrive);
-        strafe.whileHeld( strafes );
+        strafe.whileHeld(strafes);
         strafe2.whileHeld(strafess);
         loaderTestButt.whenPressed(loaderTester);
         //manPitchOnTestButt.whenPressed(manPitch);

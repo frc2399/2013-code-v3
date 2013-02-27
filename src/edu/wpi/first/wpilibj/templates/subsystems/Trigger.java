@@ -4,6 +4,7 @@ package edu.wpi.first.wpilibj.templates.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.templates.RobotMap;
+import edu.wpi.first.wpilibj.templates.commands.Fire;
 
 /**
  * if things start breaking, check the RobotMap to make sure port #'s are correct!
@@ -19,6 +20,7 @@ public class Trigger extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
+        setDefaultCommand(new Fire(0.4));
     }
     
     public void setSpeed(double speed){
