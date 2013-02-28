@@ -4,8 +4,6 @@ package edu.wpi.first.wpilibj.templates.commands;
 
 
 /**
- * Moves the trigger fully to the right then fully to the left in order to push a 
- * Frisbee.  
  * @author Jessie
  */
 public class Fire extends CommandBase {
@@ -13,6 +11,7 @@ public class Fire extends CommandBase {
 
     /**
      * 
+     * @param angle The angle you want the trigger to move to.  0 = full Left, 1 = full right.
      */
     public Fire(double angle) {
         // Use requires() here to declare subsystem dependencies
