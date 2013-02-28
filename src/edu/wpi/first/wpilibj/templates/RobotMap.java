@@ -47,6 +47,11 @@ public class RobotMap {
     //CORRECT
     public static final int climbingMot1 = 1;
     public static final int climbingMot2 = 4;
+    //CORRECT
+    public static final int driveFrontLeft = 7;
+    public static final int driveBackLeft = 8;
+    public static final int driveFrontRight = 6;
+    public static final int driveBackRight = 5;
     
     //NOT CORRECT!!!!!
     public static final int topSensor = 1;

@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.templates.commands.TestVision;
 import edu.wpi.first.wpilibj.templates.commands.Shoot;
 import edu.wpi.first.wpilibj.templates.commands.GyroReset;
 import edu.wpi.first.wpilibj.templates.commands.JoystickDrive;
-import edu.wpi.first.wpilibj.templates.commands.PIDYawTest;
+import edu.wpi.first.wpilibj.templates.commands.PIDYaw;
 import edu.wpi.first.wpilibj.templates.commands.Fire;
 import edu.wpi.first.wpilibj.templates.commands.CloseLoopAngleDrive;
 import edu.wpi.first.wpilibj.templates.commands.LoaderTester;
@@ -106,7 +106,7 @@ public class OI {
     Shoot slowShootOn = new Shoot(.5);
     Shoot shootOff = new Shoot(0);
     GyroReset gyroReset = new GyroReset();
-    PIDYawTest turn = new PIDYawTest(90);
+    PIDYaw turn = new PIDYaw(90);
     JoystickDrive joystickDrive = new JoystickDrive(1, false);
     JoystickDrive backwardsJoystickDrive = new JoystickDrive(-1, true);
     Fire fireOn = new Fire(.95);

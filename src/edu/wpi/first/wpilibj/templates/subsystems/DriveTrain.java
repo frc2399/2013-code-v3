@@ -30,10 +30,10 @@ public class DriveTrain extends Subsystem {
     public DriveTrain(){
         try{
             //CORRECT 
-            leftFront = new CANJaguar(7);
-            leftRear = new CANJaguar(8);
-            rightFront = new CANJaguar(6);
-            rightRear = new CANJaguar(5);
+            leftFront = new CANJaguar(RobotMap.driveFrontLeft);
+            leftRear = new CANJaguar(RobotMap.driveBackLeft);
+            rightFront = new CANJaguar(RobotMap.driveFrontRight);
+            rightRear = new CANJaguar(RobotMap.driveBackRight);
         }catch(Exception e){
             System.out.println(e);
             System.out.println(leftFront);
