@@ -1,8 +1,6 @@
 
 package edu.wpi.first.wpilibj.templates.commands;
 
-import com.sun.squawk.util.MathUtils;
-import edu.wpi.first.wpilibj.Timer;
 
 
 /**
@@ -11,12 +9,20 @@ import edu.wpi.first.wpilibj.Timer;
  */
 public class JoystickDrive extends CommandBase {
 
-    Timer timer;
+    int dir;
+    boolean fieldOrient;
     
-    public JoystickDrive() {
+    /**
+     * 
+     * @param direction decides if the controls are inverted or not. Input 1 if normal, and -1 if inverted
+     * @param fieldOriented set to true if you want field oriented driving.  This requires a gyro.
+     */
+    public JoystickDrive(int direction, boolean fieldOriented) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         requires(driveTrain);
+        dir = direction;
+        fieldOrient = fieldOriented;
     }
 
     // Called just before this Command runs the first time
@@ -32,50 +38,16 @@ public class JoystickDrive extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        //Brad Miller things
-        //originally, the documentation for mecanumDrive_Cartesian had the parameters listed in the wrong order
-        //it seems to be okay now
-        //not sure why
-        //look into this matter later, might need to change some source code
-        //driveTrain.drive.mecanumDrive_Cartesian(MathUtils.pow(oi.getSideSpeed(), 3), MathUtils.pow(oi.getForwardSpeed(), 3), MathUtils.pow(oi.getTwistSpeed(), 3), 0);
-        //driveTrain.drive.mecanumDrive_Cartesian(oi.getSideSpeed(), oi.getTwistSpeed(), oi.getForwardSpeed(), 0);
-        driveTrain.drive.mecanumDrive_Cartesian(oi.getSideSpeed(), oi.getForwardSpeed(), oi.getTwistSpeed(), 0);
         
-        //System.out.println("Time: " + timer.get() + "miliseconds");
-        //System.out.println("encoder: " + driveTrain.getTestEncoder());
+        
+        if(fieldOrient == true){
+            driveTrain.drive.mecanumDrive_Cartesian(dir * oi.getSideSpeed(), dir * oi.getForwardSpeed(), dir * oi.getTwistSpeed(), driveTrain.getGyroAngle());
+        }else{
+            driveTrain.drive.mecanumDrive_Cartesian(dir * oi.getSideSpeed(), dir * oi.getForwardSpeed(), dir * oi.getTwistSpeed(), 0);
+        }
+        
+        
         //System.out.println("gyro: " + driveTrain.getGyroAngle());
-        //System.out.println("Left Throttle: " + oi.getLeftStickThrottle());
-        
-        /**
-        //forward = leftFront
-        //works
-        //backward
-        
-        if(oi.getForwardSpeed() > 0.1){
-            driveTrain.leftFront.set(.5);
-        }
-        
-        //backward = leftRear
-        //full speed back runs left rear
-        //backward
-        if(oi.getForwardSpeed() < -0.1){
-            driveTrain.leftRear.set(.5);
-        }
-        
-        //twist left = rightFront
-        //works
-        //backwards 
-        if(oi.getTwistSpeed() > 0.1){
-            driveTrain.rightFront.set(.5);
-        }
-        
-        //twist right = rightRear
-        //works
-        //backwards 
-        if(oi.getTwistSpeed() < -0.1){
-            driveTrain.rightRear.set(.5);
-        }
-         */
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -6,23 +6,18 @@ import edu.wpi.first.wpilibj.buttons.DigitalIOButton;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.templates.commands.TestVision;
-import edu.wpi.first.wpilibj.templates.commands.ShootOn;
-import edu.wpi.first.wpilibj.templates.commands.ShootOff;
+import edu.wpi.first.wpilibj.templates.commands.Shoot;
 import edu.wpi.first.wpilibj.templates.commands.GyroReset;
-import edu.wpi.first.wpilibj.templates.commands.Turn;
 import edu.wpi.first.wpilibj.templates.commands.JoystickDrive;
-import edu.wpi.first.wpilibj.templates.commands.BackwardsJoystickDrive;
 import edu.wpi.first.wpilibj.templates.commands.PIDYawTest;
 import edu.wpi.first.wpilibj.templates.commands.Fire;
 import edu.wpi.first.wpilibj.templates.commands.CloseLoopAngleDrive;
-import edu.wpi.first.wpilibj.templates.commands.Strafe;
 import edu.wpi.first.wpilibj.templates.commands.LoaderTester;
 import edu.wpi.first.wpilibj.templates.commands.ManPitch;
 import edu.wpi.first.wpilibj.templates.commands.PIDPitch;
-import edu.wpi.first.wpilibj.templates.commands.LiftOn;
-import edu.wpi.first.wpilibj.templates.commands.LiftOff;
-import edu.wpi.first.wpilibj.templates.commands.TestPitchOff;
-import edu.wpi.first.wpilibj.templates.commands.TestPitchOn;
+import edu.wpi.first.wpilibj.templates.commands.Lift;
+import edu.wpi.first.wpilibj.templates.commands.TestPitch;
+import edu.wpi.first.wpilibj.templates.commands.PIDStrafe;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -94,7 +89,6 @@ public class OI {
     private final JoystickButton slowShootButt = new JoystickButton(driveyStick, slowShootButtNum); 
     private final JoystickButton shootOffButt = new JoystickButton(driveyStick, shootOffButtNum);
     private final JoystickButton gyroResetButt = new JoystickButton(driveyStick, gyroResetButtNum);
-    private final JoystickButton turnButt = new JoystickButton(driveyStick, turnButtNum);
     private final JoystickButton backwardsJoystickDriveButt = new JoystickButton(rightStick, backwardsJoystickDriveButtNum);
     private final JoystickButton joystickDriveButt = new JoystickButton(rightStick, joystickDriveButtNum);
     private final JoystickButton fireButt = new JoystickButton(driveyStick, fireButtNum);
@@ -107,29 +101,29 @@ public class OI {
     private final JoystickButton liftOffButt = new JoystickButton(leftStick, liftOffButtNum);
     
     
-    ShootOn fastShootOn = new ShootOn(1);
-    ShootOn medShootOn = new ShootOn(.75);
-    ShootOn slowShootOn = new ShootOn(.5);
-    ShootOff shootOff = new ShootOff();
+    Shoot fastShootOn = new Shoot(1);
+    Shoot medShootOn = new Shoot(.75);
+    Shoot slowShootOn = new Shoot(.5);
+    Shoot shootOff = new Shoot(0);
     GyroReset gyroReset = new GyroReset();
     PIDYawTest turn = new PIDYawTest(90);
-    JoystickDrive joystickDrive = new JoystickDrive();
-    BackwardsJoystickDrive backwardsJoystickDrive = new BackwardsJoystickDrive();
+    JoystickDrive joystickDrive = new JoystickDrive(1, false);
+    JoystickDrive backwardsJoystickDrive = new JoystickDrive(-1, true);
     Fire fireOn = new Fire(.95);
     Fire fireOff = new Fire(.4);
     CloseLoopAngleDrive closeLoopDrive = new CloseLoopAngleDrive(0);
     TestVision testVision = new TestVision(); 
-    Strafe strafes = new Strafe(0.25);
-    Strafe strafess = new Strafe( -0.25);
+    PIDStrafe strafes = new PIDStrafe(2);
+    PIDStrafe strafess = new PIDStrafe( -2);
     CloseLoopAngleDrive clad = new CloseLoopAngleDrive(0);
     LoaderTester loaderTester = new LoaderTester();
     ManPitch manPitch = new ManPitch();
     PIDPitch pitchOff = new PIDPitch(0.0);
-    LiftOn liftOn = new LiftOn(0.2);
-    LiftOff liftOff = new LiftOff();
-    TestPitchOn testPitchOnDown = new TestPitchOn(0.3);
-    TestPitchOn testPitchOnUp = new TestPitchOn(-0.3);
-    TestPitchOff testPitchOff = new TestPitchOff();
+    Lift liftOn = new Lift(0.2);
+    Lift liftOff = new Lift(0.0);
+    TestPitch testPitchOnDown = new TestPitch(0.3);
+    TestPitch testPitchOnUp = new TestPitch(-0.3);
+    TestPitch testPitchOff = new TestPitch(0);
 
     public OI(){
         fastShootButt.whenPressed(fastShootOn);
@@ -137,7 +131,6 @@ public class OI {
         slowShootButt.whenPressed(slowShootOn);
         shootOffButt.whenPressed(shootOff);
         gyroResetButt.whenPressed(gyroReset);
-        //turnButt.whenPressed(turn);
         //backwardsJoystickDriveButt.whenPressed(backwardsJoystickDrive);
         joystickDriveButt.whenPressed(joystickDrive);
         fireButt.whenPressed(fireOn);
@@ -162,12 +155,6 @@ public class OI {
     
     
 
-    //FIX THESE 
-    //we dont want to twist and go forward!!!!!
-    //they are all negative because PIMP is wired so that all of the motors run 
-    //backward when they are supposed to run forwards
-    //this is a PIMP thing
-    //might need to change for 2013 robot
     public double getForwardSpeed(){
         return -driveyStick.getRawAxis(2);
     }
@@ -184,13 +171,11 @@ public class OI {
         return driveyStick.getRawAxis(4);
     }
     
-    public double getLeftStickThrottle()
-    {
+    public double getLeftStickThrottle(){
         return leftStick.getRawAxis(3);
     }
     
-    public double getRightStickThrottle()
-    {
+    public double getRightStickThrottle(){
         return rightStick.getRawAxis(3);
     }
 }

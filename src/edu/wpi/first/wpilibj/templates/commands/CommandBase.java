@@ -12,8 +12,7 @@ import edu.wpi.first.wpilibj.templates.subsystems.Pitch;
 import edu.wpi.first.wpilibj.templates.subsystems.Trigger;
 import edu.wpi.first.wpilibj.templates.subsystems.Loader1;
 import edu.wpi.first.wpilibj.templates.subsystems.Loader2;
-import edu.wpi.first.wpilibj.templates.subsystems.Climbing1;
-import edu.wpi.first.wpilibj.templates.subsystems.Climbing2;
+import edu.wpi.first.wpilibj.templates.subsystems.Climbing;
 
 /**
  * The base for all commands. All atomic commands should subclass CommandBase.
@@ -34,8 +33,7 @@ public abstract class CommandBase extends Command {
     public static Trigger trigger;
     public static Loader1 loader1;
     public static Loader2 loader2;
-    public static Climbing1 climbing1;
-    public static Climbing2 climbing2;
+    public static Climbing climbing;
 
     public static void init() {
         // This MUST be here. If the OI creates Commands (which it very likely
@@ -52,8 +50,7 @@ public abstract class CommandBase extends Command {
         trigger = new Trigger();
         loader1 = new Loader1();
         loader2 = new Loader2();
-        climbing1 = new Climbing1();
-        climbing2 = new Climbing2();
+        climbing = new Climbing();
         
 
         //leave oi at the bottom and apart from the other initialized things

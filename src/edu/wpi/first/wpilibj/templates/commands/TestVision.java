@@ -36,8 +36,8 @@ public class TestVision extends CommandBase {
     int blobHeight;
     ParticleAnalysisReport newReport;
     
-    Strafe strafe = new Strafe(0.25);
-    Strafe negStrafe = new Strafe( -0.25);
+    PIDStrafe strafe = new PIDStrafe(0.25);
+    PIDStrafe negStrafe = new PIDStrafe( -0.25);
     CloseLoopAngleDrive clad = new CloseLoopAngleDrive( 0 );
     
 
@@ -160,6 +160,7 @@ public class TestVision extends CommandBase {
     // subsystems is scheduled to run
     protected void interrupted() {
     }
+    
     
     /**
      * @param particle the blob found in image processing
