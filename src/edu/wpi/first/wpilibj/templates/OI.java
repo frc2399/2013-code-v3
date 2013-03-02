@@ -149,7 +149,8 @@ public class OI {
         manPitchOffTestButt.whenPressed(testPitchOff);
         
         liftOnButt.whenPressed(liftOn);
-        liftOffButt.whenPressed(liftOff);
+        liftOnButt.whenReleased(liftOff);
+        //liftOffButt.whenPressed(liftOff);
         
     }
     

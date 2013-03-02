@@ -21,6 +21,7 @@ public class JoystickDrive extends CommandBase {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         requires(driveTrain);
+        requires(colorSensor);
         dir = direction;
         fieldOrient = fieldOriented;
     }
@@ -46,7 +47,7 @@ public class JoystickDrive extends CommandBase {
             driveTrain.drive.mecanumDrive_Cartesian(dir * oi.getSideSpeed(), dir * oi.getForwardSpeed(), dir * oi.getTwistSpeed(), 0);
         }
         
-        
+        System.out.println("color: " + colorSensor.colorSensor.getColor());
         //System.out.println("gyro: " + driveTrain.getGyroAngle());
     }
 

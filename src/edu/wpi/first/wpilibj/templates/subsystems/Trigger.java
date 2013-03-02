@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.templates.commands.Fire;
+import edu.wpi.first.wpilibj.HiTechnicColorSensor;
 
 /**
  * if things start breaking, check the RobotMap to make sure port #'s are correct!
@@ -15,6 +16,8 @@ public class Trigger extends Subsystem {
     // here. Call these from Commands.
     
     public Servo triggerMot = new Servo(RobotMap.triggerMot);
+    public HiTechnicColorSensor colorSensor = new HiTechnicColorSensor(RobotMap.colorSensor);
+    
     
 
     public void initDefaultCommand() {

@@ -38,7 +38,9 @@ public class PIDStrafe extends CommandBase {
         accelerometerPosition = new AccelerometerPosition();
         accelerometerPosition.reset();
         
+        //use this for testing P constant
         //controller = new PIDController((oi.getDriveyStickThrottle() + 1.0) / 20.0, 0, 0, driveTrain.gyro, translator);
+        
         controller = new PIDController(0.001, 0.0, 0.0, accelerometerPosition, translator);
         
         controller.setSetpoint(dist);

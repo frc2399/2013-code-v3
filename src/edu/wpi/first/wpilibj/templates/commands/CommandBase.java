@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.templates.subsystems.Trigger;
 import edu.wpi.first.wpilibj.templates.subsystems.Loader1;
 import edu.wpi.first.wpilibj.templates.subsystems.Loader2;
 import edu.wpi.first.wpilibj.templates.subsystems.Climbing;
+import edu.wpi.first.wpilibj.templates.subsystems.ColorSensor;
 
 /**
  * The base for all commands. All atomic commands should subclass CommandBase.
@@ -34,6 +35,7 @@ public abstract class CommandBase extends Command {
     public static Loader1 loader1;
     public static Loader2 loader2;
     public static Climbing climbing;
+    public static ColorSensor colorSensor;
 
     public static void init() {
         // This MUST be here. If the OI creates Commands (which it very likely
@@ -51,6 +53,7 @@ public abstract class CommandBase extends Command {
         loader1 = new Loader1();
         loader2 = new Loader2();
         climbing = new Climbing();
+        colorSensor = new ColorSensor();
         
 
         //leave oi at the bottom and apart from the other initialized things

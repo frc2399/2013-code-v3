@@ -54,12 +54,21 @@ public class RobotMap {
     public static final int driveBackRight = 5;
     
     //NOT CORRECT!!!!!
+    public static final int colorSensor = 1;
+    
+    //NOT CORRECT!!!!!
     public static final int topSensor = 1;
     public static final int bottomSensor = 2;
     public static final int triggerSensor = 3;
     
     //NOT CORRECT!!!!!
     public static final int accelerometer = 5;
+    
+    //TESTING VALUES
+    public static final int testLeftFront = 3;
+    public static final int testLeftRear = 5;
+    public static final int testRightFront = 6;
+    public static final int testRightRear = 7;
     
     
     

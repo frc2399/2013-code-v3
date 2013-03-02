@@ -14,8 +14,11 @@ public class Climbing extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
+    
     public CANJaguar climbingMot1;
     public CANJaguar climbingMot2;
+    
+    
     
     public Climbing(){
         
@@ -25,6 +28,7 @@ public class Climbing extends Subsystem {
         }catch(Exception e){
             System.out.println(e);
         }
+         
     }
     
     public void initDefaultCommand() {
@@ -33,12 +37,14 @@ public class Climbing extends Subsystem {
     }
     
     public void setSpeed(double speed){
+        
         try{
             climbingMot1.setX(speed);
             climbingMot2.setX(speed);
         }catch(Exception e){
             
         }
+         
     }
     
 }

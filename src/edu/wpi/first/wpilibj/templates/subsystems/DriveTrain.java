@@ -4,6 +4,7 @@ package edu.wpi.first.wpilibj.templates.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.templates.commands.JoystickDrive;
 import edu.wpi.first.wpilibj.CANJaguar;
+import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.Encoder;
@@ -22,18 +23,29 @@ public class DriveTrain extends Subsystem {
     public CANJaguar rightFront; // = new Jaguar(4);
     public CANJaguar rightRear; // = new Jaguar(3);
     
+    
+    
     Encoder testEncoder = new Encoder(RobotMap.testEncoderA, RobotMap.testEncoderB);
     public Gyro gyro = new Gyro(RobotMap.gyro);
     
     public RobotDrive drive;
     
     public DriveTrain(){
+        
         try{
+            /**
             //CORRECT 
             leftFront = new CANJaguar(RobotMap.driveFrontLeft);
             leftRear = new CANJaguar(RobotMap.driveBackLeft);
             rightFront = new CANJaguar(RobotMap.driveFrontRight);
             rightRear = new CANJaguar(RobotMap.driveBackRight);
+             */
+            
+            //TESTING 
+            leftFront = new CANJaguar(RobotMap.testLeftFront);
+            leftRear = new CANJaguar(RobotMap.testLeftRear);
+            rightFront = new CANJaguar(RobotMap.testRightFront);
+            rightRear = new CANJaguar(RobotMap.testRightRear);
         }catch(Exception e){
             System.out.println(e);
             System.out.println(leftFront);
@@ -41,6 +53,7 @@ public class DriveTrain extends Subsystem {
             System.out.println(rightFront);
             System.out.println(rightRear);
         }
+        
         
         drive = new RobotDrive(leftFront, leftRear, rightFront, rightRear);
         gyro.reset();
