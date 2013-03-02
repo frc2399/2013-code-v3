@@ -70,6 +70,9 @@ public class RobotMap {
     public static final int testRightFront = 6;
     public static final int testRightRear = 7;
     
+    public static final int testShootMot = 1;
+    public static final int testPitchMot = 4;
+    
     
     
 }

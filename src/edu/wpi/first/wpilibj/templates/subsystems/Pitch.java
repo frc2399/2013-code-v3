@@ -27,7 +27,8 @@ public class Pitch extends PIDSubsystem {
         super(0.000001, 0, 0);
         
         try{
-            pitchMot = new CANJaguar(RobotMap.pitchMot);
+            //pitchMot = new CANJaguar(RobotMap.pitchMot);
+            pitchMot = new CANJaguar(RobotMap.testPitchMot);
         }catch(Exception e){
             System.out.println(e);
         }

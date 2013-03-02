@@ -24,7 +24,8 @@ public class Shooter extends PIDSubsystem {
         super(0.001, 0, 0);
         
         try {
-            shootMot = new CANJaguar(RobotMap.shootMot);
+            //shootMot = new CANJaguar(RobotMap.shootMot);
+            shootMot = new CANJaguar(RobotMap.testShootMot);
         }catch(Exception e){
             System.out.println(e);
         }
