@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.Solenoid;
 
 /**
  *
+ * @author Lauren Dierker
  */
 public class Vision extends Subsystem {
     // Put methods for controlling this subsystem

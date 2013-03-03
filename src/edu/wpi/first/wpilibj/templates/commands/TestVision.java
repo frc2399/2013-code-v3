@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.image.NIVision.MeasurementType;
 import edu.wpi.first.wpilibj.image.NIVisionException;
 import edu.wpi.first.wpilibj.image.ParticleAnalysisReport;
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  * @author Lauren Dierker
@@ -91,6 +92,7 @@ public class TestVision extends CommandBase {
                 int numBlobs = filteredImage.getNumberParticles();
 
                 System.out.println("Number of Particles: " + numBlobs + "\n" + "\n");
+                SmartDashboard.putNumber("Number of Targets", numBlobs);
 
                 //prints out information for each blob found
                 for (int i = 0; i < numBlobs; i++) {
