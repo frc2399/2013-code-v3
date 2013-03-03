@@ -8,7 +8,6 @@ import edu.wpi.first.wpilibj.image.CriteriaCollection;
 import edu.wpi.first.wpilibj.image.NIVision.MeasurementType;
 import edu.wpi.first.wpilibj.image.NIVisionException;
 import edu.wpi.first.wpilibj.image.ParticleAnalysisReport;
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
@@ -18,8 +17,6 @@ public class TestVision extends CommandBase {
 
     AxisCamera camera;
     CriteriaCollection cc;
-    //used in first Delay
-    //set to false during execution
     final double topHeightFromGround = 104.125;
     final double middleHeightFromGround = 88.625;
     final double lowHeightFromground = 19;
@@ -199,6 +196,7 @@ public class TestVision extends CommandBase {
         double targetWidthIn = 64.0;
 
         double distance = ((320.0 * (targetWidthIn / pixelWidth)) / 2.0) / Math.tan(degrees * (Math.PI / 180.0));
+        SmartDashboard.putNumber("Distance From Targets", distance);
         return distance;
     }
   
