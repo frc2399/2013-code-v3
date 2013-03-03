@@ -6,7 +6,16 @@ import edu.wpi.first.wpilibj.templates.PIDOutputTranslator;
 
 
 /**
- *
+ * PIDYaw is used to move the robot to a specified angle using a PID Controller 
+ * in the command.  When called, the robot should move to the specified angle
+ * accurately, and stop once it gets there.  This command will end if the robot 
+ * is at the correct angle.  However, if for some reason the robot starts spinning
+ * in the wrong direction, it will never reach the specified angle and will go 
+ * into a continuous death spin.  In order to kill this, you need to take away 
+ * the subsystems supporting this command (AKA driveTrain), and it will stop 
+ * immediately.  I recommend switching over to JoystickDrive if you want to kill 
+ * this command.  Likewise, if you are using this command, you will not be able
+ * to drive the robot regularly, and the driving joystick will do nothing.  
  * @author Jessie
  */
 public class PIDYaw extends CommandBase {
