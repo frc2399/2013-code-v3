@@ -3,7 +3,9 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
 /**
- *
+ * ManPitch is used to control the pitch of the pitch plate using the joysticks.
+ * The setpoint of the pitch is based off of the throttle control on the Driving 
+ * Joystick.  It will always run, but if you take away its subsystems, it will stop.
  * @author Jessie
  */
 public class ManPitch extends CommandBase {
@@ -20,6 +22,7 @@ public class ManPitch extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+        //IF YOU CHANGE THE JOYSTICK FOR THIS, PLEASE CHANGE THE JAVADOC, TOO!
         //pitch.setSetpoint(oi.getDriveyStickThrottle() * 180);
         System.out.println("regular pitch angle " + pitch.pitchEncoder.getValue());
         System.out.println("PID pitch angle " + pitch.pitchEncoder.pidGet());
