@@ -5,7 +5,16 @@ package edu.wpi.first.wpilibj.templates.commands;
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.templates.PIDOutputTranslator;
 /**
- *
+ * The purpose of CloseLoopAngleDrive is to be able to drive the robot with 
+ * the joysticks while it stays at one constant angle.  This command uses a PID 
+ * Controller to force the robot to stay at one angle, and if the robot is jostled,
+ * it will move back to the set angle.  However, this means that although the 
+ * drivers are in control of most of the robot controls, they are unable to turn
+ * it manually, and twisting the joystick will do absolutely nothing.  If you 
+ * want to return to regular driving, you must implement a command that takes 
+ * away the subsystems of CloseLoopAngleDrive (AKA driveTrain), or else it will 
+ * never end.  You cannot kill it in any way other than overriding it.  Once again, 
+ * to YOU CANNOT KILL IT, YOU CAN ONLY TAKE AWAY ITS SUBSYSTEMS AND IT WILL STOP!
  * @author Jessie
  */
 public class CloseLoopAngleDrive extends CommandBase {
@@ -14,6 +23,10 @@ public class CloseLoopAngleDrive extends CommandBase {
     double angle;
     double initialAngle;
     
+    /**
+     * Creates a new CloseLoopAngleDrive
+     * @param angle The angle at which you want the robot to consistently stay at.
+     */
     public CloseLoopAngleDrive(double angle) {
         //change parameters so P can be adjusted according to function
         // Use requires() here to declare subsystem dependencies
@@ -64,6 +77,8 @@ public class CloseLoopAngleDrive extends CommandBase {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+        controller.disable();
+        controller.free();
     }
 }
 
