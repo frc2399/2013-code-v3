@@ -33,6 +33,13 @@ public class Vision extends Subsystem {
         //setDefaultCommand( new TestVision());
     }
     
+    /**
+     * sets different colour LED lights to on or off
+     * @param red the boolean for red LEDs being on or off
+     * @param blue the boolean for blue LEDs being on or off
+     * @param green the boolean for green LEDs being on or off
+     * @param amber the boolean for amber LEDs being on or off
+     */
     public void setLEDLights(boolean red, boolean blue, boolean green, boolean amber){
         SolenoidRed.set(red);
         SolenoidBlue.set(blue);
