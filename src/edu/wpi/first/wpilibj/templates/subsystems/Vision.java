@@ -22,10 +22,10 @@ public class Vision extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
     
-    public Solenoid SolenoidRed = new Solenoid(0);
-    public Solenoid SolenoidBlue = new Solenoid(1);
-    public Solenoid SolenoidGreen = new Solenoid(2);
-    public Solenoid SolenoidAmber = new Solenoid(3);
+    public Solenoid SolenoidRed = new Solenoid(1);
+    public Solenoid SolenoidBlue = new Solenoid(2);
+    public Solenoid SolenoidGreen = new Solenoid(3);
+    public Solenoid SolenoidAmber = new Solenoid(4);
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
