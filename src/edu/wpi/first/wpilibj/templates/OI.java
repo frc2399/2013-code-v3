@@ -18,6 +18,7 @@ import edu.wpi.first.wpilibj.templates.commands.PIDPitch;
 import edu.wpi.first.wpilibj.templates.commands.Lift;
 import edu.wpi.first.wpilibj.templates.commands.TestPitch;
 import edu.wpi.first.wpilibj.templates.commands.PIDStrafe;
+import edu.wpi.first.wpilibj.templates.commands.SetLEDColour;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -61,10 +62,6 @@ public class OI {
     Joystick leftStick = new Joystick(1);
     Joystick rightStick = new Joystick(2);
     
-    Button aim = new JoystickButton(driveyStick, 2);
-    Button strafe = new JoystickButton(leftStick, 6);
-    Button strafe2 = new JoystickButton(leftStick, 7);
-    
     public static int fastShootButtNum = 7;
     public static int medShootButtNum = 8;
     public static int slowShootButtNum = 9;
@@ -81,6 +78,13 @@ public class OI {
     public static int manPitchOffTestButtNum = 10;
     public static int liftOnButtNum = 11;
     public static int liftOffButtNum = 10;
+    public static int aimButtNum = 2;
+    public static int strafeButtNum = 6;
+    public static int strafe2ButtNum = 7;
+    public static int setLEDRedButtNum = 0;
+    public static int setLEDBlueButtNum = 0;
+    public static int setLEDGreenButtNum = 0;
+    public static int setLEDAmberButtNum = 0;
     
     
     
@@ -99,6 +103,13 @@ public class OI {
     private final JoystickButton manPitchOffTestButt = new JoystickButton(rightStick, manPitchOffTestButtNum);
     private final JoystickButton liftOnButt = new JoystickButton(leftStick, liftOnButtNum);
     private final JoystickButton liftOffButt = new JoystickButton(leftStick, liftOffButtNum);
+    private final JoystickButton aim = new JoystickButton(driveyStick, aimButtNum);
+    private final JoystickButton strafe = new JoystickButton(leftStick, strafeButtNum);
+    private final JoystickButton strafe2 = new JoystickButton(leftStick, strafe2ButtNum);
+    private final JoystickButton setLEDRed = new JoystickButton(leftStick, setLEDRedButtNum);
+    private final JoystickButton setLEDBlue = new JoystickButton(leftStick, setLEDBlueButtNum);
+    private final JoystickButton setLEDGreen = new JoystickButton(leftStick, setLEDGreenButtNum);
+    private final JoystickButton setLEDAmber = new JoystickButton(leftStick, setLEDAmberButtNum);
     
     
     Shoot fastShootOn = new Shoot(1);
@@ -124,6 +135,10 @@ public class OI {
     TestPitch testPitchOnDown = new TestPitch(0.3);
     TestPitch testPitchOnUp = new TestPitch(-0.3);
     TestPitch testPitchOff = new TestPitch(0);
+    SetLEDColour setRed = new SetLEDColour(true, false, false, false);
+    SetLEDColour setBlue = new SetLEDColour(false, true, false, false);
+    SetLEDColour setGreen = new SetLEDColour(false, false, true, false);
+    SetLEDColour setAmber = new SetLEDColour(false, false, false, true);
 
     public OI(){
         fastShootButt.whenPressed(fastShootOn);
@@ -151,6 +166,12 @@ public class OI {
         liftOnButt.whenPressed(liftOn);
         liftOnButt.whenReleased(liftOff);
         //liftOffButt.whenPressed(liftOff);
+        
+        setLEDRed.whenPressed(setRed);
+        setLEDBlue.whenPressed(setBlue);
+        setLEDGreen.whenPressed(setGreen);
+        setLEDAmber.whenPressed(setAmber);
+        
         
     }
     

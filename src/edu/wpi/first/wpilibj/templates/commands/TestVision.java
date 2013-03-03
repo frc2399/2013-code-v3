@@ -19,7 +19,6 @@ public class TestVision extends CommandBase {
     CriteriaCollection cc;
     //used in first Delay
     //set to false during execution
-    boolean foo = true;
     final double topHeightFromGround = 104.125;
     final double middleHeightFromGround = 88.625;
     final double lowHeightFromground = 19;
@@ -31,7 +30,6 @@ public class TestVision extends CommandBase {
     final double middleHeight = 29;
     final double cameraHeight = 0; //we dont know yet (2.5 feet?)
     BinaryImage newFilteredImage;
-    int i = 0;
     int blobWeWant;
     int blobHeight;
     ParticleAnalysisReport newReport;
@@ -60,7 +58,6 @@ public class TestVision extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        i++;
         //System.out.println("Execute testVision is running.");
         
         if( camera.freshImage()){
@@ -73,9 +70,6 @@ public class TestVision extends CommandBase {
 
             //if no delay, then AXIS CAMERA EXCEPTION!!!!
             //only runs first time through execute
-            if (foo) {
-                //Timer.delay(5);
-            }
 
             try {
 
@@ -141,7 +135,7 @@ public class TestVision extends CommandBase {
             } catch (NIVisionException ex) {
                 ex.printStackTrace();
             }
-            foo = false;
+            
         }
     }
 
