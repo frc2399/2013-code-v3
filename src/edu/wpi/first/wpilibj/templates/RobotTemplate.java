@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.templates.commands.CommandBase;
 import edu.wpi.first.wpilibj.templates.commands.ExampleCommand;
-import edu.wpi.first.wpilibj.templates.commands.PIDPitch;
+//import edu.wpi.first.wpilibj.templates.commands.PIDPitch;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -26,7 +26,6 @@ import edu.wpi.first.wpilibj.templates.commands.PIDPitch;
 public class RobotTemplate extends IterativeRobot {
 
     Command autonomousCommand;
-    PIDPitch disabledPitch;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -35,7 +34,7 @@ public class RobotTemplate extends IterativeRobot {
     public void robotInit() {
         // instantiate the command used for the autonomous period
         autonomousCommand = new ExampleCommand();
-        disabledPitch = new PIDPitch(0);
+        
 
         // Initialize all subsystems
         CommandBase.init();
@@ -74,8 +73,10 @@ public class RobotTemplate extends IterativeRobot {
     public void testPeriodic() {
         LiveWindow.run();
     }
-    
+    /**
     public void disabledPeriodic(){
         //disabledPitch.start();
     }
+     */ 
+     
 }

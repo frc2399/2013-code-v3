@@ -81,10 +81,11 @@ public class OI {
     public static int aimButtNum = 2;
     public static int strafeButtNum = 6;
     public static int strafe2ButtNum = 7;
-    public static int setLEDRedButtNum = 0;
-    public static int setLEDBlueButtNum = 0;
-    public static int setLEDGreenButtNum = 0;
-    public static int setLEDAmberButtNum = 0;
+    public static int setLEDRedButtNum = 2;
+    public static int setLEDBlueButtNum = 3;
+    public static int setLEDGreenButtNum = 4;
+    public static int setLEDAmberButtNum = 5;
+    public static int setAllLEDButtNum = 1;
     
     
     
@@ -106,10 +107,11 @@ public class OI {
     private final JoystickButton aim = new JoystickButton(driveyStick, aimButtNum);
     private final JoystickButton strafe = new JoystickButton(leftStick, strafeButtNum);
     private final JoystickButton strafe2 = new JoystickButton(leftStick, strafe2ButtNum);
-    private final JoystickButton setLEDRed = new JoystickButton(leftStick, setLEDRedButtNum);
-    private final JoystickButton setLEDBlue = new JoystickButton(leftStick, setLEDBlueButtNum);
-    private final JoystickButton setLEDGreen = new JoystickButton(leftStick, setLEDGreenButtNum);
-    private final JoystickButton setLEDAmber = new JoystickButton(leftStick, setLEDAmberButtNum);
+    private final JoystickButton setLEDRed = new JoystickButton(rightStick, setLEDRedButtNum);
+    private final JoystickButton setLEDBlue = new JoystickButton(rightStick, setLEDBlueButtNum);
+    private final JoystickButton setLEDGreen = new JoystickButton(rightStick, setLEDGreenButtNum);
+    private final JoystickButton setLEDAmber = new JoystickButton(rightStick, setLEDAmberButtNum);
+    private final JoystickButton setAllLEDButt = new JoystickButton(rightStick, setAllLEDButtNum);
     
     
     Shoot fastShootOn = new Shoot(1);
@@ -139,6 +141,7 @@ public class OI {
     SetLEDColour setBlue = new SetLEDColour(false, true, false, false);
     SetLEDColour setGreen = new SetLEDColour(false, false, true, false);
     SetLEDColour setAmber = new SetLEDColour(false, false, false, true);
+    SetLEDColour setAllLED = new SetLEDColour(true, true, true, true);
 
     public OI(){
         fastShootButt.whenPressed(fastShootOn);
@@ -171,6 +174,7 @@ public class OI {
         setLEDBlue.whenPressed(setBlue);
         setLEDGreen.whenPressed(setGreen);
         setLEDAmber.whenPressed(setAmber);
+        setAllLEDButt.whenPressed(setAllLED);
         
         
     }

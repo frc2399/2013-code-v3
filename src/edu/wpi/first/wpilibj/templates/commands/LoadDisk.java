@@ -3,7 +3,7 @@ package edu.wpi.first.wpilibj.templates.commands;
 
 
 /**
- *
+ * Used for the magazine with wegs.
  * @author Jessie
  */
 public class LoadDisk extends CommandBase {
