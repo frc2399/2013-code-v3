@@ -8,12 +8,12 @@ package edu.wpi.first.wpilibj.templates.commands;
  * Joystick.  It will always run, but if you take away its subsystems, it will stop.
  * @author Jessie
  */
-public class ManPitch extends CommandBase {
+public class PIDPitch extends CommandBase {
 
     double angle;
     boolean manInput;
     
-    public ManPitch(double angle, boolean isDriverControlled) {
+    public PIDPitch(double angle, boolean isDriverControlled) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         requires(pitch);
