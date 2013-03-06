@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.CANJaguar.ControlMode;
 import edu.wpi.first.wpilibj.AnalogChannel;
 import edu.wpi.first.wpilibj.templates.RobotMap;
-import edu.wpi.first.wpilibj.templates.commands.ManPitch;
+import edu.wpi.first.wpilibj.templates.commands.PIDPitch;
 /**
  *
  * @author Jessie
@@ -39,7 +39,6 @@ public class Pitch extends PIDSubsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
         
-        //setDefaultCommand(new ManPitch());
     }
     
     public void setSetpoint(double angle){
