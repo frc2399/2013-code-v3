@@ -122,8 +122,7 @@ public class OI {
     PIDYaw turn = new PIDYaw(90);
     JoystickDrive joystickDrive = new JoystickDrive(1, false);
     JoystickDrive backwardsJoystickDrive = new JoystickDrive(-1, true);
-    Fire fireOn = new Fire(.95);
-    Fire fireOff = new Fire(.4);
+    Fire fireOn = new Fire();
     CloseLoopAngleDrive closeLoopDrive = new CloseLoopAngleDrive(0);
     TestVision testVision = new TestVision(); 
     PIDStrafe strafes = new PIDStrafe(2);
@@ -152,7 +151,6 @@ public class OI {
         //backwardsJoystickDriveButt.whenPressed(backwardsJoystickDrive);
         joystickDriveButt.whenPressed(joystickDrive);
         fireButt.whenPressed(fireOn);
-        fireButt.whenReleased(fireOff);
         closeLoopDriveButt.whenPressed(closeLoopDrive);
         aim.whenPressed(clad);
         aim.whileHeld(testVision);
