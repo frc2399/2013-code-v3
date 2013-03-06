@@ -34,7 +34,7 @@ public class Vision extends Subsystem {
     int blobWeWant;
     int blobHeight;
     ParticleAnalysisReport newReport;
-    
+    double pixelWidth;
 
     final double topWidth = 62;
     final double middleWidth = 62;
@@ -67,7 +67,7 @@ public class Vision extends Subsystem {
         SolenoidAmber.set(amber);
     }
     
-    public double getDistance(int particleNumber, double pixelWidth, double degrees) {
+    public double getDistance(double degrees) {
         double targetWidthIn = 64.0;
 
         double distance = ((320.0 * (targetWidthIn / pixelWidth)) / 2.0) / Math.tan(degrees * (Math.PI / 180.0));
@@ -99,9 +99,7 @@ public class Vision extends Subsystem {
     }
     
     public int getNumParticles(){
-        if(numBlobs == 0){
-            imageProcessing();
-        }
+        imageProcessing();
         return numBlobs;
     }
     
@@ -144,6 +142,7 @@ public class Vision extends Subsystem {
              }
             
              newReport = filteredImage.getParticleAnalysisReport(blobWeWant);
+             pixelWidth = newReport.boundingRectWidth;
 
              //Always free every image you make!!!!
              image.free();
