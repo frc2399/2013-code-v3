@@ -15,7 +15,7 @@ public class Autonomous extends CommandGroup{
         //MAKE SURE VISION ENDS
         //addSequential(new TestVision());
         addSequential(new Shoot(1));
-        addSequential(new Fire(.8));
+        addSequential(new Fire());
         addSequential(new Shoot(0));
     }
 }
