@@ -10,35 +10,49 @@ package edu.wpi.first.wpilibj.templates.commands;
  */
 public class ManPitch extends CommandBase {
 
-    public ManPitch() {
+    double angle;
+    boolean manInput;
+    
+    public ManPitch(double angle, boolean isDriverControlled) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         requires(pitch);
+        manInput = isDriverControlled;
+        this.angle = angle;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+        pitch.enable();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        //IF YOU CHANGE THE JOYSTICK FOR THIS, PLEASE CHANGE THE JAVADOC, TOO!
-        //pitch.setSetpoint(oi.getDriveyStickThrottle() * 180);
+        if(manInput){
+            //IF YOU CHANGE THE JOYSTICK FOR THIS, PLEASE CHANGE THE JAVADOC, TOO!
+            //pitch.setSetpoint(oi.getDriveyStickThrottle() * 180);
+        }else{
+            //pitch.setSetpoint(angle);
+        }
+        
+        
         System.out.println("regular pitch angle " + pitch.pitchEncoder.getValue());
         System.out.println("PID pitch angle " + pitch.pitchEncoder.pidGet());
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return pitch.onTarget();
     }
 
     // Called once after isFinished returns true
     protected void end() {
+        pitch.disable();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+        pitch.disable();
     }
 }

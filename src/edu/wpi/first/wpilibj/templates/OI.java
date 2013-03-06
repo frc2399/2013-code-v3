@@ -14,7 +14,6 @@ import edu.wpi.first.wpilibj.templates.commands.Fire;
 import edu.wpi.first.wpilibj.templates.commands.CloseLoopAngleDrive;
 import edu.wpi.first.wpilibj.templates.commands.LoaderTester;
 import edu.wpi.first.wpilibj.templates.commands.ManPitch;
-import edu.wpi.first.wpilibj.templates.commands.PIDPitch;
 import edu.wpi.first.wpilibj.templates.commands.Lift;
 import edu.wpi.first.wpilibj.templates.commands.TestPitch;
 import edu.wpi.first.wpilibj.templates.commands.PIDStrafe;
@@ -130,8 +129,7 @@ public class OI {
     PIDStrafe strafess = new PIDStrafe( -2);
     CloseLoopAngleDrive clad = new CloseLoopAngleDrive(0);
     LoaderTester loaderTester = new LoaderTester();
-    ManPitch manPitch = new ManPitch();
-    PIDPitch pitchOff = new PIDPitch(0.0);
+    ManPitch manPitch = new ManPitch(0, true);
     Lift liftOn = new Lift(0.2);
     Lift liftOff = new Lift(0.0);
     TestPitch testPitchOnDown = new TestPitch(0.3);
