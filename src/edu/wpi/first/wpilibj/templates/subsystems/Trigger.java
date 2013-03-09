@@ -15,7 +15,7 @@ public class Trigger extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
     
-    public Servo triggerMot = new Servo(RobotMap.triggerMot);
+    public Servo triggerMot = new Servo(RobotMap.testTriggerMot);
     public HiTechnicColorSensor colorSensor = new HiTechnicColorSensor(RobotMap.colorSensor);
     
     
