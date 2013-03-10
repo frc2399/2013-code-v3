@@ -65,13 +65,14 @@ public class RobotMap {
     public static final int accelerometer = 5;
     
     //TESTING VALUES
-    public static final int testLeftFront = 1;
-    public static final int testLeftRear = 3;
-    public static final int testRightFront = 6;
-    public static final int testRightRear = 7;
+    public static final int testLeftFront = 7;
+    public static final int testLeftRear = 5;
+    public static final int testRightFront = 4;
+    public static final int testRightRear = 3;
     
-    public static final int testShootMot = 5;
-    public static final int testPitchMot = 4;
+    public static final int testShootMot = 6;
+    public static final int testPitchMot = 1;
+    public static final int testTriggerMot = 2;
     
     
     
