@@ -61,6 +61,31 @@ public class Pitch extends Subsystem {
         }
     }
     
+    public boolean onTarget(){
+        double x = 0.05;
+        try{
+            x = Math.abs(pitchMot.getX() - pitchMot.getPosition());
+        }catch(Exception e){
+            
+        }
+        return  x < 0.04;
+    }
+    
+    public void enable(){
+       try{
+            pitchMot.enableControl();
+        }catch(Exception e){
+            
+        } 
+    }
+    
+    public void disable(){
+        try{
+            pitchMot.disableControl();
+        }catch(Exception e){
+            
+        }
+    }
     
 }
 

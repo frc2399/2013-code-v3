@@ -30,14 +30,14 @@ public class PIDPitch extends CommandBase {
     protected void execute() {
         if(manInput){
             //IF YOU CHANGE THE JOYSTICK FOR THIS, PLEASE CHANGE THE JAVADOC, TOO!
-            //pitch.setSetpoint(oi.getDriveyStickThrottle() * 180);
+            //pitch.setSetpoint(oi.getDriveyStickThrottle() * 2 + 0.5);
         }else{
             //pitch.setSetpoint(angle);
         }
         
-        
-        System.out.println("regular pitch angle " + pitch.pitchEncoder.getValue());
-        System.out.println("PID pitch angle " + pitch.pitchEncoder.pidGet());
+        System.out.println("Drivey Stick Throttle: " + oi.getDriveyStickThrottle());
+        //System.out.println("regular pitch angle " + pitch.pitchEncoder.getValue());
+        //System.out.println("PID pitch angle " + pitch.pitchEncoder.pidGet());
     }
 
     // Make this return true when this Command no longer needs to run execute()
