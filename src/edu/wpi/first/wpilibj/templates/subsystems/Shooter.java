@@ -1,7 +1,7 @@
 
 package edu.wpi.first.wpilibj.templates.subsystems;
 
-import edu.wpi.first.wpilibj.command.PIDSubsystem; 
+import edu.wpi.first.wpilibj.command.Subsystem; 
 import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.templates.RobotMap;
@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.templates.RobotMap;
 /**
  *
  */
-public class Shooter extends PIDSubsystem {
+public class Shooter extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
     
@@ -21,11 +21,17 @@ public class Shooter extends PIDSubsystem {
     public CANJaguar shootMot;
     
     public Shooter(){
-        super(0.001, 0, 0);
         
         try {
             //shootMot = new CANJaguar(RobotMap.shootMot);
             shootMot = new CANJaguar(RobotMap.testShootMot);
+            
+            shootMot.changeControlMode(CANJaguar.ControlMode.kSpeed);
+            shootMot.configEncoderCodesPerRev(6);
+            shootMot.configNeutralMode(CANJaguar.NeutralMode.kBrake);
+            shootMot.setPID(0.5, 0.03, 0.0);
+            shootMot.setSpeedReference(CANJaguar.SpeedReference.kEncoder);
+            
         }catch(Exception e){
             System.out.println(e);
         }

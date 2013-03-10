@@ -21,6 +21,11 @@ public class Shoot extends CommandBase {
     // Called just before this Command runs the first time
     protected void initialize() {
         //shooter.setSetpoint(speed);
+        try{
+            shooter.shootMot.enableControl();
+        }catch(Exception e){
+            
+        }
         shooter.setShooterSpeed(speed);
         //System.out.println("Shooter encoder " + shooter.shootEncoder.get());
     }
@@ -38,10 +43,20 @@ public class Shoot extends CommandBase {
 
     // Called once after isFinished returns true
     protected void end() {
+        try{
+            shooter.shootMot.disableControl();
+        }catch(Exception e){
+            
+        }
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+        try{
+            shooter.shootMot.disableControl();
+        }catch(Exception e){
+            
+        }
     }
 }
