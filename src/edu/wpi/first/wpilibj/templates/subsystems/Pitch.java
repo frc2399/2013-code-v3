@@ -28,12 +28,13 @@ public class Pitch extends Subsystem {
             pitchMot = new CANJaguar(RobotMap.testPitchMot);
             pitchMot.setPID(350, 0.02, 0.0);
             pitchMot.changeControlMode(ControlMode.kPosition);
-            pitchMot.configSoftPositionLimits(2.5, 2.0);
+            pitchMot.configSoftPositionLimits(2.0, 2.5);
             pitchMot.setPositionReference(CANJaguar.PositionReference.kPotentiometer);
             pitchMot.configNeutralMode(CANJaguar.NeutralMode.kCoast);
             pitchMot.configPotentiometerTurns(10);
         }catch(Exception e){
             System.out.println(e);
+            e.printStackTrace();  
         }
          
     }
@@ -58,6 +59,7 @@ public class Pitch extends Subsystem {
             pitchMot.setX(position);
         }catch(Exception e){
             System.out.println(e);
+            e.printStackTrace();  
         }
     }
     
@@ -66,7 +68,7 @@ public class Pitch extends Subsystem {
         try{
             x = Math.abs(pitchMot.getX() - pitchMot.getPosition());
         }catch(Exception e){
-            
+            e.printStackTrace();  
         }
         return  x < 0.04;
     }
@@ -75,7 +77,7 @@ public class Pitch extends Subsystem {
        try{
             pitchMot.enableControl();
         }catch(Exception e){
-            
+            e.printStackTrace();
         } 
     }
     
@@ -83,7 +85,7 @@ public class Pitch extends Subsystem {
         try{
             pitchMot.disableControl();
         }catch(Exception e){
-            
+            e.printStackTrace();   
         }
     }
     

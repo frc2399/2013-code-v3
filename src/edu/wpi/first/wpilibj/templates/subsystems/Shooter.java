@@ -27,7 +27,10 @@ public class Shooter extends Subsystem {
             shootMot = new CANJaguar(RobotMap.testShootMot);
             
             shootMot.changeControlMode(CANJaguar.ControlMode.kSpeed);
+            //PRACTISE BOT
             shootMot.configEncoderCodesPerRev(6);
+            //COMPETITION BOT USE THIS!!!!!
+            //shootMot.configEncoderCodesPerRev(360);
             shootMot.configNeutralMode(CANJaguar.NeutralMode.kBrake);
             shootMot.setPID(0.5, 0.03, 0.0);
             shootMot.setSpeedReference(CANJaguar.SpeedReference.kEncoder);

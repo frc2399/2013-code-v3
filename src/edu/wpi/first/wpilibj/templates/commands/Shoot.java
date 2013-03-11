@@ -26,7 +26,7 @@ public class Shoot extends CommandBase {
         }catch(Exception e){
             
         }
-        shooter.setShooterSpeed(speed);
+        shooter.setShooterSpeed(speed * 3000);
         //System.out.println("Shooter encoder " + shooter.shootEncoder.get());
     }
 

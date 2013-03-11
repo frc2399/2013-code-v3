@@ -158,9 +158,8 @@ public class OI {
         strafe.whileHeld(strafes);
         strafe2.whileHeld(strafess);
         loaderTestButt.whenPressed(loaderTester);
-        //manPitchOnTestButt.whenPressed(manPitch);
-        //manPitchOffTestButt.whenPressed(pitchOff);
-        manPitchOnDownTestButt.whenPressed(testPitchOnDown);
+        manPitchOnDownTestButt.whenPressed(manPitch);
+        //manPitchOnDownTestButt.whenPressed(testPitchOnDown);
         manPitchOnUpTestButt.whenPressed(testPitchOnUp);
         manPitchOffTestButt.whenPressed(testPitchOff);
         
