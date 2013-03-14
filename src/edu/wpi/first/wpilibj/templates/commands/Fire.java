@@ -20,6 +20,8 @@ package edu.wpi.first.wpilibj.templates.commands;
  */
 public class Fire extends CommandBase {
 
+    boolean leftSwitch;
+    
     /**
      * Moves the trigger to the specified angle.
      * @param angle The angle you want the trigger to move to.  0 = full Left, 1 = full right.
@@ -32,18 +34,23 @@ public class Fire extends CommandBase {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        
+        leftSwitch = false;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        trigger.setSpeed(.75);
+        trigger.setSpeed(.5);
+        System.out.println(trigger.triggerSensor.get());
+        if(trigger.triggerSensor.get() == false){
+            leftSwitch = true;
+        }
+        
         //trigger.triggerMot.getAngle();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return trigger.triggerSensor.get();
+        return trigger.triggerSensor.get() && leftSwitch;
     }
 
     // Called once after isFinished returns true
@@ -54,5 +61,6 @@ public class Fire extends CommandBase {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+        trigger.setSpeed(0);
     }
 }

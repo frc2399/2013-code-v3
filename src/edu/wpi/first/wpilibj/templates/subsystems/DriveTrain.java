@@ -56,6 +56,8 @@ public class DriveTrain extends Subsystem {
         
         
         drive = new RobotDrive(leftFront, leftRear, rightFront, rightRear);
+        drive.setInvertedMotor(RobotDrive.MotorType.kFrontLeft, true);
+        drive.setInvertedMotor(RobotDrive.MotorType.kRearLeft, true);
         gyro.reset();
         gyro.setSensitivity(0.007);
     }

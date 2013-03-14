@@ -19,9 +19,12 @@ public class Trigger extends Subsystem {
     public HiTechnicColorSensor colorSensor = new HiTechnicColorSensor(RobotMap.colorSensor);
     public DigitalInput triggerSensor = new DigitalInput(RobotMap.triggerSensor);
     
+    boolean leftSwitch;
+    
+    
     public Trigger(){
         try{
-            triggerMot = new CANJaguar(RobotMap.triggerMot);
+            triggerMot = new CANJaguar(RobotMap.testTriggerMot);
         }catch(Exception e){
             
         }

@@ -26,9 +26,9 @@ public class Pitch extends Subsystem {
         try{
             //pitchMot = new CANJaguar(RobotMap.pitchMot);
             pitchMot = new CANJaguar(RobotMap.testPitchMot);
-            pitchMot.setPID(350, 0.02, 0.0);
             pitchMot.changeControlMode(ControlMode.kPosition);
-            pitchMot.configSoftPositionLimits(2.0, 2.5);
+            pitchMot.setPID(350, 0.02, 0.0);
+            pitchMot.configSoftPositionLimits(2.5, 2.0);
             pitchMot.setPositionReference(CANJaguar.PositionReference.kPotentiometer);
             pitchMot.configNeutralMode(CANJaguar.NeutralMode.kCoast);
             pitchMot.configPotentiometerTurns(10);

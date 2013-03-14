@@ -128,7 +128,7 @@ public class OI {
     PIDStrafe strafess = new PIDStrafe( -2);
     CloseLoopAngleDrive clad = new CloseLoopAngleDrive(0);
     LoaderTester loaderTester = new LoaderTester();
-    PIDPitch manPitch = new PIDPitch(0, true);
+    PIDPitch manPitch = new PIDPitch(0, true, false);
     Lift liftOn = new Lift(0.2);
     Lift liftOff = new Lift(0.0);
     TestPitch testPitchOnDown = new TestPitch(0.3);
