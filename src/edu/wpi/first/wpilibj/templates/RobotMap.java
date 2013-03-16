@@ -38,7 +38,7 @@ public class RobotMap {
     //CORRECT
     public static final int pitchMot = 3;
     //CORRECT
-    public static final int triggerMot = 1;
+    public static final int triggerMot = 9;
     //NOT CORRECT!!!!!
     public static final int loadMot1 = 7;
     public static final int loadMot2 = 8;

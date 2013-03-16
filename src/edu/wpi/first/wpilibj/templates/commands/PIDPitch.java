@@ -37,8 +37,8 @@ public class PIDPitch extends CommandBase {
         pitch.enable();
         
         try{
-            pitch.pitchMot.setPID(350, 0.02, 0.0);
-            pitch.pitchMot.configSoftPositionLimits(2.5, 2.0);
+            pitch.pitchMot.setPID(350, 0.03, 0.0);
+            pitch.pitchMot.configSoftPositionLimits(3.75, 4.35);
             pitch.pitchMot.setPositionReference(CANJaguar.PositionReference.kPotentiometer);
             pitch.pitchMot.configNeutralMode(CANJaguar.NeutralMode.kCoast);
             pitch.pitchMot.configPotentiometerTurns(10);
@@ -52,18 +52,19 @@ public class PIDPitch extends CommandBase {
     protected void execute() {
         if(manInput == true){
             //IF YOU CHANGE THE JOYSTICK FOR THIS, PLEASE CHANGE THE JAVADOC, TOO!
-            pitch.setPostition((oi.getDriveyStickThrottle() + 1.0) / 2.0);
+            pitch.setPosition((oi.getRightStickThrottle() + 1.0) / 2.0);
         }else{
-            //pitch.setSetpoint(angle);
+            //Zero is the biggest angle!
+            pitch.setPosition(angle);
         }
         if(i == 15){
-            System.out.print("Drivey Stick Throttle: " + oi.getDriveyStickThrottle());
+            System.out.print("right Stick Throttle: " + oi.getRightStickThrottle());
             //System.out.println("regular pitch angle " + pitch.pitchEncoder.getValue());
             //System.out.println("PID pitch angle " + pitch.pitchEncoder.pidGet());
             try{
                 //System.out.print("forward limit: " + pitch.pitchMot.getForwardLimitOK());
                 //System.out.print("reverse limit: " + pitch.pitchMot.getReverseLimitOK());
-                System.out.print("Pitch X: " + pitch.pitchMot.getX());
+                System.out.print(" Pitch X: " + pitch.pitchMot.getX());
                 //System.out.print(" P: " + pitch.pitchMot.getP());
                 //System.out.print(" I: " + pitch.pitchMot.getI());
                 //System.out.print(" Voltage: " + pitch.pitchMot.getOutputVoltage());

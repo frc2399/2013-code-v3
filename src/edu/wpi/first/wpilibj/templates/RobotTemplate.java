@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.templates.commands.CommandBase;
 import edu.wpi.first.wpilibj.templates.commands.ExampleCommand;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.templates.commands.Autonomous;
 //import edu.wpi.first.wpilibj.templates.commands.PIDPitch;
 
 /**
@@ -26,7 +27,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class RobotTemplate extends IterativeRobot {
 
-    Command autonomousCommand;
+    //Command autonomousCommand;
+    Autonomous autonomous;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -34,16 +36,19 @@ public class RobotTemplate extends IterativeRobot {
      */
     public void robotInit() {
         // instantiate the command used for the autonomous period
-        autonomousCommand = new ExampleCommand();
+        //autonomousCommand = new ExampleCommand();
+        
         
 
         // Initialize all subsystems
         CommandBase.init();
+        autonomous = new Autonomous();
     }
 
     public void autonomousInit() {
         // schedule the autonomous command (example)
-        autonomousCommand.start();
+        //autonomousCommand.start();
+        autonomous.start();
     }
 
     /**
@@ -52,7 +57,7 @@ public class RobotTemplate extends IterativeRobot {
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
         
-        SmartDashboard.putData("SchedulerData", Scheduler.getInstance());
+        //SmartDashboard.putData("SchedulerData", Scheduler.getInstance());
     }
 
     public void teleopInit() {
@@ -60,7 +65,8 @@ public class RobotTemplate extends IterativeRobot {
         // teleop starts running. If you want the autonomous to 
         // continue until interrupted by another command, remove
         // this line or comment it out.
-        autonomousCommand.cancel();
+        
+        autonomous.cancel();
         
     }
 

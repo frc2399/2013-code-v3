@@ -42,7 +42,7 @@ public class Climbing extends Subsystem {
             climbingMot1.setX(speed);
             climbingMot2.setX(speed);
         }catch(Exception e){
-            
+            e.printStackTrace();
         }
          
     }

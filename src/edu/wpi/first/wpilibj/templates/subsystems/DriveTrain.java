@@ -33,19 +33,21 @@ public class DriveTrain extends Subsystem {
     public DriveTrain(){
         
         try{
-            /**
+            
             //CORRECT 
             leftFront = new CANJaguar(RobotMap.driveFrontLeft);
             leftRear = new CANJaguar(RobotMap.driveBackLeft);
             rightFront = new CANJaguar(RobotMap.driveFrontRight);
             rightRear = new CANJaguar(RobotMap.driveBackRight);
-             */
+             
             
             //TESTING 
+            /**
             leftFront = new CANJaguar(RobotMap.testLeftFront);
             leftRear = new CANJaguar(RobotMap.testLeftRear);
             rightFront = new CANJaguar(RobotMap.testRightFront);
             rightRear = new CANJaguar(RobotMap.testRightRear);
+             */
         }catch(Exception e){
             System.out.println(e);
             System.out.println(leftFront);
@@ -56,8 +58,9 @@ public class DriveTrain extends Subsystem {
         
         
         drive = new RobotDrive(leftFront, leftRear, rightFront, rightRear);
-        drive.setInvertedMotor(RobotDrive.MotorType.kFrontLeft, true);
-        drive.setInvertedMotor(RobotDrive.MotorType.kRearLeft, true);
+        //ONLY FOR MYCROFT!
+        //drive.setInvertedMotor(RobotDrive.MotorType.kFrontLeft, true);
+        //drive.setInvertedMotor(RobotDrive.MotorType.kRearLeft, true);
         gyro.reset();
         gyro.setSensitivity(0.007);
     }
@@ -77,6 +80,7 @@ public class DriveTrain extends Subsystem {
     
     public double getGyroAngle(){
         return gyro.getAngle();
+        //return 0.0;
     }
     
     public void resetGyro(){

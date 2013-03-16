@@ -23,14 +23,14 @@ public class Shooter extends Subsystem {
     public Shooter(){
         
         try {
-            //shootMot = new CANJaguar(RobotMap.shootMot);
-            shootMot = new CANJaguar(RobotMap.testShootMot);
+            shootMot = new CANJaguar(RobotMap.shootMot);
+            //shootMot = new CANJaguar(RobotMap.testShootMot);
             
             shootMot.changeControlMode(CANJaguar.ControlMode.kSpeed);
             //PRACTISE BOT
-            shootMot.configEncoderCodesPerRev(6);
+            //shootMot.configEncoderCodesPerRev(6);
             //COMPETITION BOT USE THIS!!!!!
-            //shootMot.configEncoderCodesPerRev(360);
+            shootMot.configEncoderCodesPerRev(360);
             shootMot.configNeutralMode(CANJaguar.NeutralMode.kBrake);
             shootMot.setPID(0.5, 0.03, 0.0);
             shootMot.setSpeedReference(CANJaguar.SpeedReference.kEncoder);
@@ -77,19 +77,41 @@ public class Shooter extends Subsystem {
          try{
             shootMot.setX(speed);
         }catch(Exception e){
-            
+            e.printStackTrace();
         }
          
     }
-    
-    public double getSpeed(){
-        double x = 0.0;
+    public double getSpeedSetpoint(){
+        double x = -1.0;
         try{
             x =  shootMot.getX();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return x;
+    }
+            
+    public double getSpeed(){
+        double x = -1.0;
+        try{
+            x =  shootMot.getSpeed();
         }catch(Exception e){
             
         }
         return x;
+    }
+    
+    public boolean isReady(){
+        
+        double error = Math.abs(getSpeed() + getSpeedSetpoint());
+        if (error <= 300){
+            //System.out.println("Shoot Ended; error = " + error);
+        
+            return true;
+        }else{
+            //System.out.println("Shoot Ended; error = " + error);
+            return false;
+        }
     }
     
     

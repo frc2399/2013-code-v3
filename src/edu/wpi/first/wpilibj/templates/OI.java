@@ -61,22 +61,29 @@ public class OI {
     Joystick leftStick = new Joystick(1);
     Joystick rightStick = new Joystick(2);
     
-    public static int fastShootButtNum = 7;
-    public static int medShootButtNum = 8;
-    public static int slowShootButtNum = 9;
-    public static int shootOffButtNum = 10;
-    public static int gyroResetButtNum = 4;
+    public static int fastShootButtNum = 4;
+    public static int medShootButtNum = 5;
+   // public static int slowShootButtNum = 9;
+    public static int shootOffButtNum = 2;
+    
     public static int turnButtNum = 3;
     public static int backwardsJoystickDriveButtNum = 8;
-    public static int joystickDriveButtNum = 9;
+    
+    public static int fieldOrientButtNum = 3;
+    public static int joystickDriveButtNum = 4;
+    public static int gyroResetButtNum = 2;
+    
     public static int fireButtNum = 1;
     public static int closeLoopDriveButtNum = 11;
     public static int loaderTestButtNum = 9;
     public static int manPitchOnDownTestButtNum = 11;
     public static int manPitchOnUpTestButtNum = 8;
     public static int manPitchOffTestButtNum = 10;
-    public static int liftOnButtNum = 11;
-    public static int liftOffButtNum = 10;
+    
+    public static int liftOnUpButtNum = 9;
+    public static int liftOnDownButtNum = 11;
+    public static int liftOffButtNum =12;
+    
     public static int aimButtNum = 2;
     public static int strafeButtNum = 6;
     public static int strafe2ButtNum = 7;
@@ -88,39 +95,49 @@ public class OI {
     
     
     
-    private final JoystickButton fastShootButt = new JoystickButton(driveyStick, fastShootButtNum); 
-    private final JoystickButton medShootButt = new JoystickButton(driveyStick, medShootButtNum); 
-    private final JoystickButton slowShootButt = new JoystickButton(driveyStick, slowShootButtNum); 
-    private final JoystickButton shootOffButt = new JoystickButton(driveyStick, shootOffButtNum);
-    private final JoystickButton gyroResetButt = new JoystickButton(driveyStick, gyroResetButtNum);
+    private final JoystickButton fastShootButt = new JoystickButton(rightStick, fastShootButtNum); 
+    private final JoystickButton medShootButt = new JoystickButton(rightStick, medShootButtNum); 
+    //private final JoystickButton slowShootButt = new JoystickButton(driveyStick, slowShootButtNum); 
+    private final JoystickButton shootOffButt = new JoystickButton(rightStick, shootOffButtNum);
+    
     private final JoystickButton backwardsJoystickDriveButt = new JoystickButton(rightStick, backwardsJoystickDriveButtNum);
-    private final JoystickButton joystickDriveButt = new JoystickButton(rightStick, joystickDriveButtNum);
-    private final JoystickButton fireButt = new JoystickButton(driveyStick, fireButtNum);
+    private final JoystickButton fireButt = new JoystickButton(rightStick, fireButtNum);
     private final JoystickButton closeLoopDriveButt = new JoystickButton(driveyStick, closeLoopDriveButtNum);
     private final JoystickButton loaderTestButt = new JoystickButton(leftStick, loaderTestButtNum);
     private final JoystickButton manPitchOnDownTestButt = new JoystickButton(rightStick, manPitchOnDownTestButtNum);
     private final JoystickButton manPitchOnUpTestButt = new JoystickButton(rightStick, manPitchOnUpTestButtNum);
     private final JoystickButton manPitchOffTestButt = new JoystickButton(rightStick, manPitchOffTestButtNum);
-    private final JoystickButton liftOnButt = new JoystickButton(leftStick, liftOnButtNum);
-    private final JoystickButton liftOffButt = new JoystickButton(leftStick, liftOffButtNum);
+    
+    private final JoystickButton liftOnUpButt = new JoystickButton(driveyStick, liftOnUpButtNum);
+    private final JoystickButton liftOnDownButt = new JoystickButton(driveyStick, liftOnDownButtNum);
+    private final JoystickButton liftOffButt = new JoystickButton(driveyStick, liftOffButtNum);
+    
+    
+    private final JoystickButton joystickDriveButt = new JoystickButton(driveyStick, joystickDriveButtNum);
+    private final JoystickButton fieldOrientButt = new JoystickButton(driveyStick, fieldOrientButtNum);
+    private final JoystickButton gyroResetButt = new JoystickButton(driveyStick, gyroResetButtNum);
+    
+    
     private final JoystickButton aim = new JoystickButton(driveyStick, aimButtNum);
     private final JoystickButton strafe = new JoystickButton(leftStick, strafeButtNum);
     private final JoystickButton strafe2 = new JoystickButton(leftStick, strafe2ButtNum);
-    private final JoystickButton setLEDRed = new JoystickButton(rightStick, setLEDRedButtNum);
-    private final JoystickButton setLEDBlue = new JoystickButton(rightStick, setLEDBlueButtNum);
-    private final JoystickButton setLEDGreen = new JoystickButton(rightStick, setLEDGreenButtNum);
-    private final JoystickButton setLEDAmber = new JoystickButton(rightStick, setLEDAmberButtNum);
-    private final JoystickButton setAllLEDButt = new JoystickButton(rightStick, setAllLEDButtNum);
+    
+    private final JoystickButton setLEDRed = new JoystickButton(leftStick, setLEDRedButtNum);
+    private final JoystickButton setLEDBlue = new JoystickButton(leftStick, setLEDBlueButtNum);
+    private final JoystickButton setLEDGreen = new JoystickButton(leftStick, setLEDGreenButtNum);
+    private final JoystickButton setLEDAmber = new JoystickButton(leftStick, setLEDAmberButtNum);
+    //private final JoystickButton setAllLEDButt = new JoystickButton(rightStick, setAllLEDButtNum);
     
     
     Shoot fastShootOn = new Shoot(1);
     Shoot medShootOn = new Shoot(.75);
     Shoot slowShootOn = new Shoot(.5);
     Shoot shootOff = new Shoot(0);
-    GyroReset gyroReset = new GyroReset();
     PIDYaw turn = new PIDYaw(90);
     JoystickDrive joystickDrive = new JoystickDrive(1, false);
     JoystickDrive backwardsJoystickDrive = new JoystickDrive(-1, true);
+    JoystickDrive fieldOrient = new JoystickDrive(1, true);
+    GyroReset gyroReset = new GyroReset();
     Fire fireOn = new Fire();
     CloseLoopAngleDrive closeLoopDrive = new CloseLoopAngleDrive(0);
     TestVision testVision = new TestVision(); 
@@ -129,11 +146,12 @@ public class OI {
     CloseLoopAngleDrive clad = new CloseLoopAngleDrive(0);
     LoaderTester loaderTester = new LoaderTester();
     PIDPitch manPitch = new PIDPitch(0, true, false);
-    Lift liftOn = new Lift(0.2);
+    PIDPitch manPitchOff = new PIDPitch(0, false, true);
+    Lift liftUp = new Lift(0.75);
     Lift liftOff = new Lift(0.0);
+    Lift liftDown = new Lift(-0.75);
     TestPitch testPitchOnDown = new TestPitch(0.3);
     TestPitch testPitchOnUp = new TestPitch(-0.3);
-    TestPitch testPitchOff = new TestPitch(0);
     SetLEDColour setRed = new SetLEDColour(true, false, false, false);
     SetLEDColour setBlue = new SetLEDColour(false, true, false, false);
     SetLEDColour setGreen = new SetLEDColour(false, false, true, false);
@@ -143,33 +161,38 @@ public class OI {
     public OI(){
         fastShootButt.whenPressed(fastShootOn);
         medShootButt.whenPressed(medShootOn);
-        slowShootButt.whenPressed(slowShootOn);
+        //slowShootButt.whenPressed(slowShootOn);
         shootOffButt.whenPressed(shootOff);
-        gyroResetButt.whenPressed(gyroReset);
         //backwardsJoystickDriveButt.whenPressed(backwardsJoystickDrive);
-        joystickDriveButt.whenPressed(joystickDrive);
-        fireButt.whenPressed(fireOn);
-        closeLoopDriveButt.whenPressed(closeLoopDrive);
-        aim.whenPressed(clad);
-        aim.whileHeld(testVision);
-        aim.whenReleased(joystickDrive);
-        strafe.whileHeld(strafes);
-        strafe2.whileHeld(strafess);
-        loaderTestButt.whenPressed(loaderTester);
-        manPitchOnDownTestButt.whenPressed(manPitch);
-        //manPitchOnDownTestButt.whenPressed(testPitchOnDown);
-        manPitchOnUpTestButt.whenPressed(testPitchOnUp);
-        manPitchOffTestButt.whenPressed(testPitchOff);
         
-        liftOnButt.whenPressed(liftOn);
-        liftOnButt.whenReleased(liftOff);
-        //liftOffButt.whenPressed(liftOff);
+        joystickDriveButt.whenPressed(joystickDrive);
+        fieldOrientButt.whenPressed(fieldOrient);
+        gyroResetButt.whenPressed(gyroReset);
+        
+        fireButt.whenPressed(fireOn);
+        //closeLoopDriveButt.whenPressed(closeLoopDrive);
+        //aim.whenPressed(clad);
+        //aim.whileHeld(testVision);
+        //aim.whenReleased(joystickDrive);
+        //strafe.whileHeld(strafes);
+        //strafe2.whileHeld(strafess);
+        //loaderTestButt.whenPressed(loaderTester);
+        
+        manPitchOnDownTestButt.whenPressed(manPitch);
+        manPitchOffTestButt.whenPressed(manPitchOff);
+        //manPitchOnDownTestButt.whenPressed(testPitchOnDown);
+        //manPitchOnUpTestButt.whenPressed(testPitchOnUp);
+        
+        
+        liftOnUpButt.whenPressed(liftUp);
+        liftOnDownButt.whenPressed(liftDown);
+        liftOffButt.whenPressed(liftOff);
         
         setLEDRed.whenPressed(setRed);
         setLEDBlue.whenPressed(setBlue);
         setLEDGreen.whenPressed(setGreen);
         setLEDAmber.whenPressed(setAmber);
-        setAllLEDButt.whenPressed(setAllLED);
+        //etAllLEDButt.whenPressed(setAllLED);
         
         
     }

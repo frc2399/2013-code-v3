@@ -37,7 +37,8 @@ public class PIDYaw extends CommandBase {
         translator = new PIDOutputTranslator();
         
         //controller = new PIDController((oi.getDriveyStickThrottle() + 1.0) / 20.0, 0, 0, driveTrain.gyro, translator);
-        controller = new PIDController(0.001, 0, 0, driveTrain.gyro, translator);
+        
+        //controller = new PIDController(0.001, 0, 0, driveTrain.gyro, translator);
         // P = 0.00546875
         controller.setSetpoint(driveTrain.getGyroAngle() + angle);
         controller.setPercentTolerance(1);

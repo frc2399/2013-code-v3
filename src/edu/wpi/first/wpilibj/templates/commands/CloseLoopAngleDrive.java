@@ -42,7 +42,7 @@ public class CloseLoopAngleDrive extends CommandBase {
         
         translator = new PIDOutputTranslator();
         
-        controller = new PIDController(oi.getLeftStickThrottle(), 0, 0, driveTrain.gyro, translator);
+        //controller = new PIDController(oi.getLeftStickThrottle(), 0, 0, driveTrain.gyro, translator);
         
         // 2/14/13 we tested and got: P 0.005554872047244094 I 2.8125000000000003E-4
         //THESE ARE SLIGHTLY TOO BIG!!!!!

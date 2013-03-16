@@ -25,10 +25,10 @@ public class Pitch extends Subsystem {
         
         try{
             //pitchMot = new CANJaguar(RobotMap.pitchMot);
-            pitchMot = new CANJaguar(RobotMap.testPitchMot);
+            pitchMot = new CANJaguar(RobotMap.pitchMot);
             pitchMot.changeControlMode(ControlMode.kPosition);
-            pitchMot.setPID(350, 0.02, 0.0);
-            pitchMot.configSoftPositionLimits(2.5, 2.0);
+            pitchMot.setPID(350, 0.03, 0.0);
+            pitchMot.configSoftPositionLimits(3.75, 4.35);
             pitchMot.setPositionReference(CANJaguar.PositionReference.kPotentiometer);
             pitchMot.configNeutralMode(CANJaguar.NeutralMode.kCoast);
             pitchMot.configPotentiometerTurns(10);
@@ -53,8 +53,8 @@ public class Pitch extends Subsystem {
      * sets the position of the pitch motor.  
      * @param position position of the pitch motor. 0 <= position <= 1. Zero is biggest angle, 1 is straight
      */
-    public void setPostition(double position){
-        position = position * .5 + 2.0;
+    public void setPosition(double position){
+        position = position * .6 + 3.75;
         try{
             pitchMot.setX(position);
         }catch(Exception e){
@@ -80,6 +80,7 @@ public class Pitch extends Subsystem {
             e.printStackTrace();
         } 
     }
+    
     
     public void disable(){
         try{

@@ -16,7 +16,7 @@ public class Trigger extends Subsystem {
     // here. Call these from Commands.
  
     public CANJaguar triggerMot; 
-    public HiTechnicColorSensor colorSensor = new HiTechnicColorSensor(RobotMap.colorSensor);
+    //public HiTechnicColorSensor colorSensor = new HiTechnicColorSensor(RobotMap.colorSensor);
     public DigitalInput triggerSensor = new DigitalInput(RobotMap.triggerSensor);
     
     boolean leftSwitch;
@@ -24,7 +24,8 @@ public class Trigger extends Subsystem {
     
     public Trigger(){
         try{
-            triggerMot = new CANJaguar(RobotMap.testTriggerMot);
+            //triggerMot = new CANJaguar(RobotMap.testTriggerMot);
+            triggerMot = new CANJaguar(RobotMap.triggerMot);
         }catch(Exception e){
             
         }

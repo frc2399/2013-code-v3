@@ -23,6 +23,8 @@ public class JoystickDrive extends CommandBase {
 
     int dir;
     boolean fieldOrient;
+    double driveyStickThrottle;
+    int i;
     
     /**
      * Creates a new JoystickDrive command.  This command always runs, unless it's
@@ -49,6 +51,8 @@ public class JoystickDrive extends CommandBase {
         requires(colorSensor);
         dir = direction;
         fieldOrient = fieldOriented;
+        driveyStickThrottle = 1.0;
+        i = 0;
     }
 
     // Called just before this Command runs the first time
@@ -65,13 +69,21 @@ public class JoystickDrive extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         
+        driveyStickThrottle = (oi.getDriveyStickThrottle() + 1) / 2;
         
         if(fieldOrient == true){
-            driveTrain.drive.mecanumDrive_Cartesian(dir * oi.getSideSpeed(), dir * oi.getForwardSpeed(), dir * oi.getTwistSpeed(), driveTrain.getGyroAngle());
+            driveTrain.drive.mecanumDrive_Cartesian(dir * oi.getSideSpeed(), dir * oi.getForwardSpeed(), dir * oi.getTwistSpeed() * driveyStickThrottle, driveTrain.getGyroAngle());
         }else{
-            driveTrain.drive.mecanumDrive_Cartesian(dir * oi.getSideSpeed(), dir * oi.getForwardSpeed(), dir * oi.getTwistSpeed(), 0);
+            driveTrain.drive.mecanumDrive_Cartesian(dir * oi.getSideSpeed(), dir * oi.getForwardSpeed(), dir * oi.getTwistSpeed() * driveyStickThrottle, 0);
         }
-        
+        /**
+        if(i < 14){
+            i++;
+        }else{
+            System.out.println("turning speed percent" + driveyStickThrottle);
+            i = 0;
+        }
+        */
         //System.out.println("color: " + colorSensor.colorSensor.getColor());
         //System.out.println("gyro: " + driveTrain.getGyroAngle());
     }
