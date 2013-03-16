@@ -18,11 +18,16 @@ public class Lift extends CommandBase {
         // eg. requires(chassis);
         requires(climbing);
         this.speed = speed;
+        
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        climbing.setSpeed(speed);
+        if(motor == 1){
+            climbing.setSpeed1(speed);
+        }else{
+            climbing.setSpeed2(speed);
+        }
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -32,6 +37,8 @@ public class Lift extends CommandBase {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
+        
+        
         return true;
     }
 

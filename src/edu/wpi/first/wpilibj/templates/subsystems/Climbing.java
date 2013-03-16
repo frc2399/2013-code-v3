@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.CANJaguar.ControlMode;
 import edu.wpi.first.wpilibj.templates.RobotMap;
+import edu.wpi.first.wpilibj.DigitalInput;
 
 /**
  *
@@ -17,6 +18,11 @@ public class Climbing extends Subsystem {
     
     public CANJaguar climbingMot1;
     public CANJaguar climbingMot2;
+    
+    public DigitalInput topLimit1;
+    public DigitalInput topLimit2;
+    public DigitalInput bottomLimit1;
+    public DigitalInput bottomLimit2;
     
     
     
@@ -36,15 +42,39 @@ public class Climbing extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
     
-    public void setSpeed(double speed){
+    public void setSpeed1(double speed){
         
         try{
             climbingMot1.setX(speed);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+         
+    }
+    public void setSpeed2(double speed){
+        
+        try{
             climbingMot2.setX(speed);
         }catch(Exception e){
             e.printStackTrace();
         }
          
+    }
+    
+    public boolean getTopLimit1(){
+        return topLimit1.get();
+    }
+    
+    public boolean getBottomLimit1(){
+        return bottomLimit1.get();
+    }
+    
+    public boolean getTopLimit2(){
+        return topLimit2.get();
+    }
+    
+    public boolean getBottomLimit2(){
+        return bottomLimit2.get();
     }
     
 }
