@@ -16,14 +16,14 @@ public class Autonomous extends CommandGroup{
         //addSequential(new TestVision());
         
         
-        //addParallel(new PIDPitch(0.2, false, false));
-        addParallel(new PIDPitch(0.3, false, false));
+        addParallel(new PIDPitch(0.2, false, false));
+        //addParallel(new PIDPitch(0.3, false, false));
         addSequential(new Shoot(1));
         addSequential(new Fire());
         addSequential(new Fire());
         addSequential(new Fire());
-        //addSequential(new PIDPitch(0.2, false, true));
-        addSequential(new PIDPitch(0.3, false, true));
+        addSequential(new PIDPitch(0.2, false, true));
+        //addSequential(new PIDPitch(0.3, false, true));
         addSequential(new Shoot(0));
     }
 }

@@ -80,9 +80,9 @@ public class OI {
     public static int manPitchOnUpTestButtNum = 8;
     public static int manPitchOffTestButtNum = 10;
     
-    public static int liftOnUpButtNum = 9;
-    public static int liftOnDownButtNum = 11;
-    public static int liftOffButtNum =12;
+    public static int liftOnUpButtNum = 6;
+    public static int liftOnDownButtNum = 7;
+    public static int liftOffButtNum =11;
     
     public static int aimButtNum = 2;
     public static int strafeButtNum = 6;
@@ -108,9 +108,9 @@ public class OI {
     private final JoystickButton manPitchOnUpTestButt = new JoystickButton(rightStick, manPitchOnUpTestButtNum);
     private final JoystickButton manPitchOffTestButt = new JoystickButton(rightStick, manPitchOffTestButtNum);
     
-    private final JoystickButton liftOnUpButt = new JoystickButton(driveyStick, liftOnUpButtNum);
-    private final JoystickButton liftOnDownButt = new JoystickButton(driveyStick, liftOnDownButtNum);
-    private final JoystickButton liftOffButt = new JoystickButton(driveyStick, liftOffButtNum);
+    private final JoystickButton liftOnUpButt = new JoystickButton(rightStick, liftOnUpButtNum);
+    private final JoystickButton liftOnDownButt = new JoystickButton(rightStick, liftOnDownButtNum);
+    private final JoystickButton liftOffButt = new JoystickButton(leftStick, liftOffButtNum);
     
     
     private final JoystickButton joystickDriveButt = new JoystickButton(driveyStick, joystickDriveButtNum);
