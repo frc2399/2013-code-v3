@@ -40,7 +40,7 @@ public class Fire extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         trigger.setSpeed(.5);
-        System.out.println(trigger.triggerSensor.get());
+        //System.out.println(trigger.triggerSensor.get());
         if(trigger.triggerSensor.get() == false){
             leftSwitch = true;
         }
