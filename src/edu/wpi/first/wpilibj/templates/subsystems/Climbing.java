@@ -29,12 +29,22 @@ public class Climbing extends Subsystem {
     public Climbing(){
         
         try{
+            //left
             climbingMot1 = new CANJaguar(RobotMap.climbingMot1);
+            //right
             climbingMot2 = new CANJaguar(RobotMap.climbingMot2);
         }catch(Exception e){
             System.out.println(e);
         }
          
+        //left top
+        topLimit1 = new DigitalInput(RobotMap.liftLimitSwitchTop1);
+        //right top
+        topLimit2 = new DigitalInput(RobotMap.liftLimitSwitchTop2);
+        //left bottom
+        bottomLimit1 = new DigitalInput(RobotMap.liftLimitSwitchBottom1);
+        //right bottom
+        bottomLimit2 = new DigitalInput(RobotMap.liftLimitSwitchBottom2);
     }
     
     public void initDefaultCommand() {
@@ -43,22 +53,107 @@ public class Climbing extends Subsystem {
     }
     
     public void setSpeed1(double speed){
+        //left
         
-        try{
-            climbingMot1.setX(speed);
-        }catch(Exception e){
-            e.printStackTrace();
+        if(speed < 0){
+            if(bottomLimit1.get() == true){
+                try{
+                    climbingMot1.setX(0);
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+            }else{
+                try{
+                    climbingMot1.setX(speed);
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+            }
+        }else if(speed > 0){
+            if(topLimit1.get() == true){
+                try{
+                    climbingMot1.setX(0);
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+            }else{
+                try{
+                    climbingMot1.setX(speed);
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+            }
+        }else{
+            try{
+                climbingMot1.setX(0);
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+        }
+    }
+    
+    
+    public void setSpeed2(double speed){
+        //right
+        
+        if(speed < 0){
+            if(bottomLimit2.get() == true){
+                try{
+                    climbingMot2.setX(0);
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+            }else{
+                try{
+                    climbingMot2.setX(speed);
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+            }
+        }else if(speed > 0){
+            if(topLimit2.get() == true){
+                try{
+                    climbingMot2.setX(0);
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+            }else{
+                try{
+                    climbingMot2.setX(speed);
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+            }
+        }else{
+            try{
+                climbingMot2.setX(0);
+            }catch(Exception e){
+                e.printStackTrace();
+            }
         }
          
     }
-    public void setSpeed2(double speed){
-        
+    
+    public double getSpeed1(){
+        double speed = 0.0;
         try{
-            climbingMot2.setX(speed);
+            speed = climbingMot1.getX();
         }catch(Exception e){
             e.printStackTrace();
         }
-         
+        return speed;
+                
+    }
+    
+    public double getSpeed2(){
+        double speed = 0.0;
+        try{
+            speed = climbingMot2.getX();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return speed;
+                
     }
     
     public boolean getTopLimit1(){

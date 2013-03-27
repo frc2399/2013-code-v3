@@ -23,23 +23,20 @@ public class Lift extends CommandBase {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        if(motor == 1){
-            climbing.setSpeed1(speed);
-        }else{
-            climbing.setSpeed2(speed);
-        }
+        
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        
+        climbing.setSpeed1(speed);
+        climbing.setSpeed2(speed);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
         
         
-        return true;
+        return climbing.getSpeed1() == 0.0 && climbing.getSpeed2() == 0.0;
     }
 
     // Called once after isFinished returns true

@@ -33,6 +33,8 @@ public class RobotMap {
     public static final int shootEncoderA = 8;
     public static final int shootEncoderB = 9;
     
+    
+    
     //CORRECT
     public static final int gyro = 1;
     //CORRECT
@@ -45,13 +47,22 @@ public class RobotMap {
     //CORRECT
     public static final int shootMot = 2;
     //CORRECT
-    public static final int climbingMot1 = 1;
-    public static final int climbingMot2 = 4;
+    public static final int climbingMot1 = 4;
+    public static final int climbingMot2 = 1;
     //CORRECT
     public static final int driveFrontLeft = 7;
     public static final int driveBackLeft = 8;
     public static final int driveFrontRight = 6;
     public static final int driveBackRight = 5;
+    //CORRECT!!!!!
+    public static final int liftLimitSwitchTop1 = 4;
+    public static final int liftLimitSwitchTop2 = 1;
+    public static final int liftLimitSwitchBottom1 = 5;
+    public static final int liftLimitSwitchBottom2 = 2;
+    
+    
+    
+    
     
     //NOT CORRECT!!!!!
     public static final int colorSensor = 1;
@@ -63,6 +74,8 @@ public class RobotMap {
     
     //NOT CORRECT!!!!!
     public static final int accelerometer = 5;
+    
+     
     
     //TESTING VALUES
     public static final int testLeftFront = 7;
