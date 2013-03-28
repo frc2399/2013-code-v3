@@ -54,23 +54,25 @@ public class RobotMap {
     public static final int driveBackLeft = 8;
     public static final int driveFrontRight = 6;
     public static final int driveBackRight = 5;
-    //CORRECT!!!!!
+    //CORRECT
     public static final int liftLimitSwitchTop1 = 4;
     public static final int liftLimitSwitchTop2 = 1;
     public static final int liftLimitSwitchBottom1 = 5;
     public static final int liftLimitSwitchBottom2 = 2;
-    
-    
-    
-    
-    
-    //NOT CORRECT!!!!!
-    public static final int colorSensor = 1;
-    
-    //NOT CORRECT!!!!!
-    public static final int topSensor = 1;
-    public static final int bottomSensor = 2;
+    //CORRECT
     public static final int triggerSensor = 3;
+    
+    
+    
+    
+    
+    //NOT CORRECT!!!!!
+    public static final int colorSensor = 7;
+    
+    //NOT CORRECT!!!!!
+    public static final int topSensor = 8;
+    public static final int bottomSensor = 6;
+    
     
     //NOT CORRECT!!!!!
     public static final int accelerometer = 5;

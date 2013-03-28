@@ -28,6 +28,8 @@ public class Lift extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+        System.out.println("left bottom limit " + climbing.getBottomLimit1());
+        
         climbing.setSpeed1(speed);
         climbing.setSpeed2(speed);
     }
