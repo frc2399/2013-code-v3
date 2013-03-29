@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.image.ParticleAnalysisReport;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.image.CriteriaCollection;
 import edu.wpi.first.wpilibj.Solenoid;
+import java.lang.Math;
 
 /**
  *
@@ -35,6 +36,7 @@ public class Vision extends Subsystem {
     int blobHeight;
     ParticleAnalysisReport newReport;
     double pixelWidth;
+    double angle;
 
     final double topWidth = 62;
     final double middleWidth = 62;
@@ -85,9 +87,9 @@ public class Vision extends Subsystem {
             int blobHeight = report.boundingRectHeight;
 
             if (blobWidth / blobHeight > (topWidth / topHeight - 1) && blobWidth / blobHeight < (topWidth / topHeight + 1)) {
-                target = "Top target";
+                target = "T";
             } else if (blobWidth / blobHeight > (middleWidth / middleHeight - 1) && blobWidth / blobHeight < (middleWidth / middleHeight + 1)) {
-                target = "Middle Target";
+                target = "M";
             } else {
                 target = "Not Top/Middle";
             }
@@ -103,14 +105,52 @@ public class Vision extends Subsystem {
         return numBlobs;
     }
     
-    public double getAimPitch(){
-        
-        return 0.0;
+    
+    /**
+     * Finds the correct angle to set the pitch to based on values found 
+     * with vision processing and functions found with testing.
+     * If it finds a value that is too high or too low, the value 
+     * is automatically set to the lowest or highest possible value
+     * @return the angle to set the pitch to. 0 <= angle <= 1
+     */
+    public double getAimPitchTop(){
+        imageProcessing();
+        double dist = getDistance(32.8);
+        double angle = 0.0006*(dist*dist) - 0.0375*(dist) + 2.5819;
+          angle = (angle * 2)- 4;
+        if( angle < 0){
+            angle = 0;
+        } else if( angle > 1){
+            angle = 1;
+        }
+        return angle;
+
     }
+    
+    /**
+     * Finds the correct angle to set the pitch to based on values found 
+     * with vision processing and functions found with testing.
+     * If it finds a value that is too high or too low, the value 
+     * is automatically set to the lowest or highest possible value
+     * @return the angle to set the pitch to. 0 <= angle <= 1
+     */
+     public double getAimPitchMiddle(){
+        imageProcessing();
+        double dist = getDistance(32.8);
+        double angle =  0.0001*(dist*dist) - 0.0034*dist + 2.0222;
+        angle = (angle * 2)- 4;
+        if( angle < 0){
+            angle = 0;
+        } else if( angle > 1){
+            angle = 1;
+        }
+        return angle;     
+     }
+                
     
      public void imageProcessing(){
         camera = AxisCamera.getInstance("10.23.99.11");
-        camera.writeMaxFPS(30); 
+        camera.writeMaxFPS(15); 
          
         cc = new CriteriaCollection(); 
         cc.addCriteria(MeasurementType.IMAQ_MT_AREA, 500, 65535, false);
@@ -118,9 +158,14 @@ public class Vision extends Subsystem {
         
          try {
             ColorImage image = camera.getImage();
-
             
-            BinaryImage thresholdImage = image.thresholdHSV(0, 255, 0, 255, 223, 255);    //testing these valus now...
+            for( int i = 0; i < 30; i++){
+                
+            image.write("/newImage" + i + ".bmp");
+            
+            }
+
+            BinaryImage thresholdImage = image.thresholdRGB(0, 187, 189, 255, 0, 225);    //testing these valus now...
             BinaryImage convexHullImage = thresholdImage.convexHull(false);          // fill in occluded rectangles
             BinaryImage filteredImage = convexHullImage.particleFilter(cc);           // filter out small particles
             newFilteredImage = convexHullImage.particleFilter(cc);

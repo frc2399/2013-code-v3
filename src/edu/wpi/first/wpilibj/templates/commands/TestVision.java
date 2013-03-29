@@ -50,7 +50,7 @@ public class TestVision extends CommandBase {
         //why the hell is there an i here
         //i didnt make this(i think)
         camera = AxisCamera.getInstance("10.23.99.11");
-        camera.writeMaxFPS(30);
+        camera.writeMaxFPS(15);
         
         
     }
@@ -95,6 +95,7 @@ public class TestVision extends CommandBase {
                 //prints out information for each blob found
                 for (int i = 0; i < numBlobs; i++) {
                     ParticleAnalysisReport report = filteredImage.getParticleAnalysisReport(i);
+                    
                     /*System.out.println( //"Particle Analysis Report for " + i + " blob: " + report.toString() + "\n" + "\n" +
                         "Bounding Rectangle width for blob " + i + ": " + report.boundingRectWidth + "\n" + "\n"
                         + "Bounding Rectangle Height for blob " + i + ": " + report.boundingRectHeight + "\n" + "\n"

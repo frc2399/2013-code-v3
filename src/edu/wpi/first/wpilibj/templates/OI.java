@@ -18,6 +18,8 @@ import edu.wpi.first.wpilibj.templates.commands.Lift;
 import edu.wpi.first.wpilibj.templates.commands.TestPitch;
 import edu.wpi.first.wpilibj.templates.commands.PIDStrafe;
 import edu.wpi.first.wpilibj.templates.commands.SetLEDColour;
+import edu.wpi.first.wpilibj.templates.commands.NewTestVision;
+
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -93,6 +95,11 @@ public class OI {
     public static int setLEDAmberButtNum = 5;
     public static int setAllLEDButtNum = 1;
     
+    public static int imageProcessingNum = 6;
+    
+    public static int aimTopNum = 8;
+    public static int aimMiddleNum = 9;
+    
     
     
     private final JoystickButton fastShootButt = new JoystickButton(rightStick, fastShootButtNum); 
@@ -128,6 +135,11 @@ public class OI {
     private final JoystickButton setLEDAmber = new JoystickButton(leftStick, setLEDAmberButtNum);
     //private final JoystickButton setAllLEDButt = new JoystickButton(rightStick, setAllLEDButtNum);
     
+    private final JoystickButton imageProcessing = new JoystickButton( leftStick, imageProcessingNum);
+    
+    private final JoystickButton aimTopButt = new JoystickButton( leftStick, aimTopNum);
+    private final JoystickButton aimMiddleButt = new JoystickButton( leftStick, aimMiddleNum);
+    
     
     Shoot fastShootOn = new Shoot(1);
     Shoot medShootOn = new Shoot(.75);
@@ -141,6 +153,7 @@ public class OI {
     Fire fireOn = new Fire();
     CloseLoopAngleDrive closeLoopDrive = new CloseLoopAngleDrive(0);
     TestVision testVision = new TestVision(); 
+    NewTestVision newTestVision = new NewTestVision(false, false, true);
     PIDStrafe strafes = new PIDStrafe(2);
     PIDStrafe strafess = new PIDStrafe( -2);
     CloseLoopAngleDrive clad = new CloseLoopAngleDrive(0);
@@ -157,6 +170,11 @@ public class OI {
     SetLEDColour setGreen = new SetLEDColour(false, false, true, false);
     SetLEDColour setAmber = new SetLEDColour(false, false, false, true);
     SetLEDColour setAllLED = new SetLEDColour(true, true, true, true);
+    
+    NewTestVision setAimTop = new NewTestVision(true, false, false);
+    NewTestVision setAimMiddle = new NewTestVision(false, true, false);
+    
+    
 
     public OI(){
         fastShootButt.whenPressed(fastShootOn);
@@ -194,7 +212,10 @@ public class OI {
         setLEDAmber.whenPressed(setAmber);
         //etAllLEDButt.whenPressed(setAllLED);
         
+        imageProcessing.whenPressed(newTestVision);
         
+        aimTopButt.whenPressed(setAimTop);
+        aimMiddleButt.whenPressed(setAimMiddle);
     }
     
     
