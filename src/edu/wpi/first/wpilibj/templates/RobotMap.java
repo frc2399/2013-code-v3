@@ -55,10 +55,10 @@ public class RobotMap {
     public static final int driveFrontRight = 6;
     public static final int driveBackRight = 5;
     //CORRECT
-    public static final int liftLimitSwitchTop1 = 4;
-    public static final int liftLimitSwitchTop2 = 1;
-    public static final int liftLimitSwitchBottom1 = 5;
-    public static final int liftLimitSwitchBottom2 = 2;
+    public static final int liftLimitSwitchTop1 = 5;
+    public static final int liftLimitSwitchTop2 = 7;
+    public static final int liftLimitSwitchBottom1 = 4;
+    public static final int liftLimitSwitchBottom2 = 6;
     //CORRECT
     public static final int triggerSensor = 3;
     

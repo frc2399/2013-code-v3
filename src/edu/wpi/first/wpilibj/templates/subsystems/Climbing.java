@@ -56,7 +56,7 @@ public class Climbing extends Subsystem {
         //left
         
         if(speed < 0){
-            if(bottomLimit1.get() == true){
+            if(bottomLimit1.get() == false){
                 try{
                     climbingMot1.setX(0);
                 }catch(Exception e){
@@ -70,7 +70,7 @@ public class Climbing extends Subsystem {
                 }
             }
         }else if(speed > 0){
-            if(topLimit1.get() == true){
+            if(topLimit1.get() == false){
                 try{
                     climbingMot1.setX(0);
                 }catch(Exception e){
@@ -97,7 +97,7 @@ public class Climbing extends Subsystem {
         //right
         
         if(speed < 0){
-            if(bottomLimit2.get() == true){
+            if(bottomLimit2.get() == false){
                 try{
                     climbingMot2.setX(0);
                 }catch(Exception e){
@@ -111,7 +111,7 @@ public class Climbing extends Subsystem {
                 }
             }
         }else if(speed > 0){
-            if(topLimit2.get() == true){
+            if(topLimit2.get() == false){
                 try{
                     climbingMot2.setX(0);
                 }catch(Exception e){
